@@ -14,7 +14,7 @@ use photocraft_ui_egui::theme::ThemeKind;
 use photocraft_ui_egui::{FileDialogAnswer, FileDialogRequest, PhotocraftApp, Services};
 use wasm_bindgen::JsCast as _;
 
-type Inbox = Arc<Mutex<Vec<(String, Vec<u8>)>>>;
+pub(crate) type Inbox = Arc<Mutex<Vec<(String, Vec<u8>)>>>;
 
 /// Everything File › Open reads: PhotoCraft, Photoshop, OpenRaster, Krita and Affinity documents, flat images, and
 /// Photoshop brushes (.abr), gradients (.grd), layer styles (.asl) and swatches (.aco, .act, .ase), which go to the preset libraries.
@@ -89,7 +89,14 @@ pub fn start() {
                     let (session, warnings) = crate::preset_bridge::session(presets.clone());
                     preset_warnings.extend(warnings);
                     let drag = listen_drag(&pen_target);
-                    let mut app = PhotocraftApp::new(session, services(inbox.clone(), place_inbox.clone(), drag_pos_service(pen_target.clone(), drag)));
+                    // Al Majlis fork (F5a): `window.photocraft` feeds the app's control channel.
+                    let (control_tx, control_rx) = std::sync::mpsc::channel();
+                    crate::api::connect(Some(control_tx), inbox.clone(), cc.egui_ctx.clone());
+                    if let Err(e) = crate::api::install() {
+                        log::error!("photocraft-web: couldn't install window.photocraft: {e:?}");
+                    }
+                    let mut app = PhotocraftApp::new(session, services(inbox.clone(), place_inbox.clone(), drag_pos_service(pen_target.clone(), drag)))
+                        .with_control(control_rx);
                     if !preset_warnings.is_empty() {
                         photocraft_ui_egui::notices::post(&mut app, i18n::t("Some brush presets could not be loaded"), preset_warnings, true, None);
                     }
@@ -373,6 +380,7 @@ impl eframe::App for WebShell {
         }
         self.serve_fonts(ctx);
         self.app.logic_frame(ctx, frame);
+        crate::api::poll_replies();
         self.save_presets(ctx);
         self.app.finish_type_reset_logic(ctx);
     }
@@ -404,6 +412,7 @@ impl eframe::App for WebShell {
         self.app.ui_frame(ui, frame);
         self.save_presets(ui.ctx());
         self.app.finish_type_reset_pass(ui.ctx());
+        crate::api::poll_replies();
     }
 }
 
@@ -477,6 +486,10 @@ fn local_storage() -> Option<web_sys::Storage> {
 
 /// Trigger a browser download of `bytes` named after the last component of `path`.
 fn download(path: &str, bytes: &[u8]) -> Result<(), String> {
+    // Al Majlis fork (F5a): saves stay in the page when `photocraft.captureDownloads(true)` is on.
+    if crate::api::capture(path, bytes) {
+        return Ok(());
+    }
     let js = |e: wasm_bindgen::JsValue| format!("{e:?}");
     let name = std::path::Path::new(path).file_name().map(|n| n.to_string_lossy().to_string()).unwrap_or_else(|| "photocraft".into());
     let window = web_sys::window().ok_or("no window")?;

@@ -25,6 +25,14 @@ mod indexed_presets;
 #[cfg(target_arch = "wasm32")]
 mod web;
 
+// Al Majlis fork (Stage F, F5a): `window.photocraft`, the page's control channel, ported from
+// VectorCraft's `api.rs` onto the same `ControlRequest` the desktop control server uses.
+#[cfg(target_arch = "wasm32")]
+mod api;
+
+#[cfg(target_arch = "wasm32")]
+mod saved_files;
+
 #[cfg(target_arch = "wasm32")]
 fn main() {
     web::start();
