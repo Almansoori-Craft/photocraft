@@ -462,6 +462,9 @@ fn services(inbox: Inbox, place_inbox: Inbox, cursor_pos: photocraft_ui_egui::Cu
             }
         })),
         write: Some(Box::new(|path: &str, bytes: &[u8]| download(path, bytes))),
+        // Al Majlis fork (F6): agent saves (app.save {path}) become captured downloads too, so a
+        // session can checkpoint the native .pcraft format; the browser has no folders to authorize.
+        automation_write: Some(Box::new(|path: &str, bytes: &[u8]| download(path, bytes))),
         // A download may be cancelled and never reports back: it doesn't save the document.
         write_unconfirmed: true,
         encode_png: Some(Box::new(|w, h, rgba| {
