@@ -91,7 +91,7 @@ pub fn start() {
                     let drag = listen_drag(&pen_target);
                     // Al Majlis fork (F5a): `window.photocraft` feeds the app's control channel.
                     let (control_tx, control_rx) = std::sync::mpsc::channel();
-                    crate::api::connect(Some(control_tx), inbox.clone(), cc.egui_ctx.clone());
+                    crate::api::connect(Some(control_tx), inbox.clone(), place_inbox.clone(), cc.egui_ctx.clone());
                     if let Err(e) = crate::api::install() {
                         log::error!("photocraft-web: couldn't install window.photocraft: {e:?}");
                     }

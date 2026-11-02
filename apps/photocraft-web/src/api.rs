@@ -35,13 +35,15 @@ thread_local! {
     static WAITING: RefCell<Vec<Waiting>> = const { RefCell::new(Vec::new()) };
     static CTX: RefCell<Option<egui::Context>> = const { RefCell::new(None) };
     static INBOX: RefCell<Option<Inbox>> = const { RefCell::new(None) };
+    static PLACE_INBOX: RefCell<Option<Inbox>> = const { RefCell::new(None) };
     static CAPTURE: Cell<bool> = const { Cell::new(false) };
     static SAVED: RefCell<SavedFiles> = RefCell::new(SavedFiles::default());
 }
 
 /// Wire the page's requests to the app: control requests go to `tx`, opened files to `inbox`.
 /// After a graphics restart the app keeps its channel: `tx` is `None` and only the context changes.
-pub fn connect(tx: Option<Sender<ControlRequest>>, inbox: Inbox, ctx: egui::Context) {
+pub fn connect(tx: Option<Sender<ControlRequest>>, inbox: Inbox, place_inbox: Inbox, ctx: egui::Context) {
+    PLACE_INBOX.with(|i| *i.borrow_mut() = Some(place_inbox));
     if let Some(tx) = tx {
         TX.with(|t| *t.borrow_mut() = Some(tx));
     }
@@ -147,6 +149,23 @@ pub fn install() -> Result<(), JsValue> {
         "openFile",
         Closure::<dyn Fn(String, js_sys::Uint8Array) -> JsValue>::new(|name: String, bytes: js_sys::Uint8Array| {
             let queued = INBOX.with(|i| {
+                i.borrow().as_ref().is_some_and(|inbox| {
+                    inbox.lock().unwrap_or_else(|e| e.into_inner()).push((name, bytes.to_vec()));
+                    true
+                })
+            });
+            repaint();
+            JsValue::from_bool(queued)
+        })
+        .into_js_value(),
+    )?;
+    // Al Majlis fork (F5b): place a file into the open document as a dropped-on-canvas file is placed
+    // (a Smart Object when the preference says so), since file.placeEmbedded needs a path the web lacks.
+    set_fn(
+        &obj,
+        "placeFile",
+        Closure::<dyn Fn(String, js_sys::Uint8Array) -> JsValue>::new(|name: String, bytes: js_sys::Uint8Array| {
+            let queued = PLACE_INBOX.with(|i| {
                 i.borrow().as_ref().is_some_and(|inbox| {
                     inbox.lock().unwrap_or_else(|e| e.into_inner()).push((name, bytes.to_vec()));
                     true
