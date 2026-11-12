@@ -15,6 +15,10 @@
 //!
 //! - **Pro (Light Gray)** and **Pro (Light)**: Photoshop's third and fourth interface brightness
 //!   levels (#B8B8B8 and #F0F0F0 panels) with the Pro layout (#2661).
+//! - **Al Majlis** (Light and Dark): the Pro layout in Al Majlis' palette and shapes (warm
+//!   off-white or near-black surfaces, a blue accent, pill tabs in a rounded track, 8/12/16 pt
+//!   corners on controls, cards and windows). Values from Al Majlis' look sheet
+//!   (`docs/craft/MAJLIS_LOOK.md` in the Al Majlis repository).
 //!
 //! Widgets read [`Tokens::get`] instead of hard-coding colours, so every theme applies everywhere.
 
@@ -52,10 +56,14 @@ pub enum ThemeKind {
     SoftDark,
     /// A low-contrast light theme: pale violet-grey surfaces, softened dark text and a periwinkle accent.
     SoftLight,
+    /// Al Majlis light: the Pro layout with Al Majlis' colours and rounded shapes.
+    MajlisLight,
+    /// Al Majlis dark: the Pro layout with Al Majlis' colours and rounded shapes.
+    MajlisDark,
 }
 
 impl ThemeKind {
-    pub const ALL: [ThemeKind; 14] = [
+    pub const ALL: [ThemeKind; 16] = [
         ThemeKind::Pro,
         ThemeKind::ProMedium,
         ThemeKind::ProLightGray,
@@ -70,6 +78,8 @@ impl ThemeKind {
         ThemeKind::BreezeDark,
         ThemeKind::SoftDark,
         ThemeKind::SoftLight,
+        ThemeKind::MajlisLight,
+        ThemeKind::MajlisDark,
     ];
     pub fn label(self) -> &'static str {
         match self {
@@ -87,6 +97,8 @@ impl ThemeKind {
             ThemeKind::BreezeDark => "Breeze Dark",
             ThemeKind::SoftDark => "Soft Dark",
             ThemeKind::SoftLight => "Soft Light",
+            ThemeKind::MajlisLight => "Al Majlis (Light)",
+            ThemeKind::MajlisDark => "Al Majlis (Dark)",
         }
     }
     /// The canonical name: `ui.set {theme}` accepts it and the Window › Theme commands are
@@ -107,11 +119,18 @@ impl ThemeKind {
             ThemeKind::BreezeDark => "breezeDark",
             ThemeKind::SoftDark => "softDark",
             ThemeKind::SoftLight => "softLight",
+            ThemeKind::MajlisLight => "majlisLight",
+            ThemeKind::MajlisDark => "majlisDark",
         }
     }
-    /// Photoshop-grammar layout (tab strips, flat panels): the four Pro brightness levels.
+    /// Photoshop-grammar layout (tab strips, flat panels): the four Pro brightness levels, and
+    /// the two Al Majlis themes, which keep that layout.
     pub fn is_pro(self) -> bool {
-        matches!(self, ThemeKind::Pro | ThemeKind::ProMedium | ThemeKind::ProLightGray | ThemeKind::ProLight)
+        matches!(self, ThemeKind::Pro | ThemeKind::ProMedium | ThemeKind::ProLightGray | ThemeKind::ProLight | ThemeKind::MajlisLight | ThemeKind::MajlisDark)
+    }
+    /// The Al Majlis themes (their own shapes: pill tabs, pill buttons, rounded cards).
+    pub fn is_majlis(self) -> bool {
+        matches!(self, ThemeKind::MajlisLight | ThemeKind::MajlisDark)
     }
     /// Whether this theme belongs to the dark appearance family.
     pub fn is_dark(self) -> bool {
@@ -124,6 +143,7 @@ impl ThemeKind {
                 | ThemeKind::AdwaitaDark
                 | ThemeKind::BreezeDark
                 | ThemeKind::SoftDark
+                | ThemeKind::MajlisDark
         )
     }
     /// Whether this theme belongs to the light appearance family.
@@ -150,6 +170,8 @@ impl ThemeKind {
             "breezedark" | "kdedark" | "plasmadark" => Some(ThemeKind::BreezeDark),
             "softdark" => Some(ThemeKind::SoftDark),
             "softlight" => Some(ThemeKind::SoftLight),
+            "majlislight" | "almajlislight" | "majlis" | "almajlis" => Some(ThemeKind::MajlisLight),
+            "majlisdark" | "almajlisdark" => Some(ThemeKind::MajlisDark),
             _ => None,
         }
     }
@@ -211,6 +233,16 @@ pub struct Tokens {
     pub caption_close_text: Color32,
     /// Dims the main window behind a modal that takes all input (Camera Raw).
     pub scrim: Color32,
+    /// Al Majlis shapes on top of the Pro layout: pill tabs in a rounded track, pill text
+    /// buttons (secondary = raised fill + hairline), menus whose rows hover in the raised colour
+    /// with rounded corners, accent sliders and a focus outline on fields. The corner radii are
+    /// the usual three: `radius_sm` for controls (fields, tool buttons, menu rows), `radius` for
+    /// cards, panels and menus, `radius_lg` for windows, dialogs and popovers.
+    pub majlis: bool,
+    /// The primary (accent) button while hovered or pressed.
+    pub accent_hover: Color32,
+    /// Keyboard-focus outline of fields and buttons.
+    pub focus: Color32,
 }
 
 impl Tokens {
@@ -221,6 +253,96 @@ impl Tokens {
 
     pub fn for_kind(kind: ThemeKind) -> Self {
         match kind {
+            // Al Majlis light (docs/craft/MAJLIS_LOOK.md): the Pro layout in Al Majlis' colours and
+            // shapes. The canvas surround stays the Pro neutral grey so colours are judged as before.
+            ThemeKind::MajlisLight => Tokens {
+                kind,
+                chrome: Color32::from_rgb(255, 255, 255),
+                canvas: Color32::from_gray(214),
+                canvas_dot: Color32::from_gray(214),
+                dock: Color32::from_rgb(242, 241, 238),
+                card: Color32::from_rgb(255, 255, 255),
+                card_border: Color32::from_rgb(226, 225, 222),
+                field: Color32::from_rgb(246, 245, 243),
+                field_border: Color32::from_rgb(238, 238, 238),
+                hover: Color32::from_rgb(246, 245, 243),
+                pressed: Color32::from_rgb(232, 231, 227),
+                text: Color32::from_rgb(20, 20, 22),
+                text_dim: Color32::from_rgb(91, 91, 92),
+                text_faint: Color32::from_rgb(126, 126, 127),
+                icon: Color32::from_rgb(91, 91, 92),
+                accent: Color32::from_rgb(37, 99, 235),
+                accent_soft: Color32::from_rgb(233, 239, 253),
+                accent_border: Color32::from_rgb(37, 99, 235),
+                accent_text: Color32::from_rgb(29, 78, 216),
+                separator: Color32::from_rgb(238, 238, 238),
+                shadow: Color32::from_black_alpha(40),
+                primary_bg: Color32::from_rgb(37, 99, 235),
+                primary_text: Color32::WHITE,
+                danger: Color32::from_rgb(180, 35, 24),
+                warning: Color32::from_rgb(181, 71, 8),
+                radius_sm: 8.0,
+                radius: 12.0,
+                radius_lg: 16.0,
+                bevel: false,
+                pro: true,
+                round_chips: false,
+                tab_strip: Color32::from_rgb(246, 245, 243),
+                row_selected: Color32::from_rgb(233, 239, 253),
+                histogram_bg: Color32::from_rgb(40, 40, 40),
+                histogram_level: 225,
+                caption_close: Color32::from_rgb(196, 43, 28),
+                caption_close_text: Color32::WHITE,
+                scrim: Color32::from_black_alpha(90),
+                majlis: true,
+                accent_hover: Color32::from_rgb(29, 78, 216),
+                focus: Color32::from_rgba_unmultiplied(37, 99, 235, 115),
+            },
+            // Al Majlis dark (docs/craft/MAJLIS_LOOK.md): the Pro layout in Al Majlis' colours and
+            // shapes. The canvas surround stays the Pro neutral grey so colours are judged as before.
+            ThemeKind::MajlisDark => Tokens {
+                kind,
+                chrome: Color32::from_rgb(23, 23, 26),
+                canvas: Color32::from_gray(40),
+                canvas_dot: Color32::from_gray(40),
+                dock: Color32::from_rgb(13, 13, 15),
+                card: Color32::from_rgb(23, 23, 26),
+                card_border: Color32::from_rgb(32, 32, 34),
+                field: Color32::from_rgb(32, 32, 36),
+                field_border: Color32::from_rgb(41, 41, 43),
+                hover: Color32::from_rgb(32, 32, 36),
+                pressed: Color32::from_rgb(46, 46, 52),
+                text: Color32::from_rgb(244, 244, 242),
+                text_dim: Color32::from_rgb(178, 178, 177),
+                text_faint: Color32::from_rgb(144, 144, 145),
+                icon: Color32::from_rgb(178, 178, 177),
+                accent: Color32::from_rgb(37, 99, 235),
+                accent_soft: Color32::from_rgb(25, 35, 59),
+                accent_border: Color32::from_rgb(37, 99, 235),
+                accent_text: Color32::from_rgb(147, 197, 253),
+                separator: Color32::from_rgb(41, 41, 43),
+                shadow: Color32::from_black_alpha(150),
+                primary_bg: Color32::from_rgb(37, 99, 235),
+                primary_text: Color32::WHITE,
+                danger: Color32::from_rgb(253, 162, 155),
+                warning: Color32::from_rgb(254, 200, 75),
+                radius_sm: 8.0,
+                radius: 12.0,
+                radius_lg: 16.0,
+                bevel: false,
+                pro: true,
+                round_chips: false,
+                tab_strip: Color32::from_rgb(32, 32, 36),
+                row_selected: Color32::from_rgb(25, 35, 59),
+                histogram_bg: Color32::from_rgb(40, 40, 40),
+                histogram_level: 225,
+                caption_close: Color32::from_rgb(196, 43, 28),
+                caption_close_text: Color32::WHITE,
+                scrim: Color32::from_black_alpha(110),
+                majlis: true,
+                accent_hover: Color32::from_rgb(59, 130, 246),
+                focus: Color32::from_rgba_unmultiplied(96, 165, 250, 128),
+            },
             // Sampled from Photoshop 2026's default brightness (raw display values).
             ThemeKind::ProMedium => Tokens {
                 kind,
@@ -331,6 +453,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(196, 43, 28),
                 caption_close_text: Color32::WHITE,
                 scrim: Color32::from_black_alpha(110),
+                majlis: false,
+                accent_hover: Color32::from_rgb(55, 142, 240),
+                focus: Color32::from_rgb(55, 142, 240),
             },
             ThemeKind::Studio => Tokens {
                 kind,
@@ -373,6 +498,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(196, 43, 28),
                 caption_close_text: Color32::WHITE,
                 scrim: Color32::from_black_alpha(110),
+                majlis: false,
+                accent_hover: Color32::from_rgb(246, 246, 248),
+                focus: Color32::from_rgb(139, 124, 246),
             },
             ThemeKind::StudioLight => Tokens {
                 kind,
@@ -413,6 +541,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(196, 43, 28),
                 caption_close_text: Color32::WHITE,
                 scrim: Color32::from_black_alpha(110),
+                majlis: false,
+                accent_hover: Color32::from_rgb(20, 20, 24),
+                focus: Color32::from_rgb(108, 92, 231),
             },
             ThemeKind::Classic => Tokens {
                 kind,
@@ -453,6 +584,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(196, 43, 28),
                 caption_close_text: Color32::WHITE,
                 scrim: Color32::from_black_alpha(110),
+                majlis: false,
+                accent_hover: Color32::from_rgb(212, 208, 200),
+                focus: Color32::from_rgb(10, 36, 106),
             },
             // libadwaita's named colours (window, sidebar, card, view, accent, destructive) and
             // radii (6 px buttons, 12 px cards), mapped onto the Studio layout. GNOME's close
@@ -496,6 +630,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(212, 212, 216),
                 caption_close_text: Color32::from_rgb(50, 50, 54),
                 scrim: Color32::from_black_alpha(110),
+                majlis: false,
+                accent_hover: Color32::from_rgb(53, 132, 228),
+                focus: Color32::from_rgb(53, 132, 228),
             },
             ThemeKind::AdwaitaDark => Tokens {
                 kind,
@@ -536,6 +673,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(72, 72, 76),
                 caption_close_text: Color32::WHITE,
                 scrim: Color32::from_black_alpha(110),
+                majlis: false,
+                accent_hover: Color32::from_rgb(53, 132, 228),
+                focus: Color32::from_rgb(53, 132, 228),
             },
             // The light counterpart, adapted the same way: our own values, chosen a few levels
             // from Breeze Light's surfaces so the app blends into a Plasma desktop without being a
@@ -582,6 +722,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(213, 51, 60),
                 caption_close_text: Color32::WHITE,
                 scrim: Color32::from_black_alpha(110),
+                majlis: false,
+                accent_hover: Color32::from_rgb(35, 122, 180),
+                focus: Color32::from_rgb(58, 172, 232),
             },
             // An adaptation of KDE Plasma's Breeze Dark look on the Studio layout, not a copy: our
             // own values, chosen a few levels from Breeze Dark's surfaces (the darkest canvas, then
@@ -632,6 +775,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(213, 51, 60),
                 caption_close_text: Color32::WHITE,
                 scrim: Color32::from_black_alpha(110),
+                majlis: false,
+                accent_hover: Color32::from_rgb(30, 118, 176),
+                focus: Color32::from_rgb(58, 172, 232),
             },
             // Soft Dark: our own low-contrast palette on the Studio layout. Muted violet-grey
             // surfaces (never near-black), softened off-white text and a periwinkle accent; the
@@ -675,6 +821,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(200, 72, 86),
                 caption_close_text: Color32::WHITE,
                 scrim: Color32::from_black_alpha(100),
+                majlis: false,
+                accent_hover: Color32::from_rgb(86, 104, 196),
+                focus: Color32::from_rgb(138, 154, 232),
             },
             // Soft Light: pale violet-grey surfaces, softened dark-violet text (not black) and a
             // periwinkle accent, with the same generous radii as Soft Dark.
@@ -717,6 +866,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(200, 60, 72),
                 caption_close_text: Color32::WHITE,
                 scrim: Color32::from_black_alpha(90),
+                majlis: false,
+                accent_hover: Color32::from_rgb(80, 98, 190),
+                focus: Color32::from_rgb(110, 128, 216),
             },
             // Ethan Schoonover's Solarized Dark palette: base03 canvas, base02 surfaces, base0
             // body text and the Solarized blue accent. https://ethanschoonover.com/solarized/
@@ -760,6 +912,9 @@ impl Tokens {
                 caption_close: Color32::from_rgb(220, 50, 47),
                 caption_close_text: Color32::from_rgb(253, 246, 227),
                 scrim: Color32::from_black_alpha(110),
+                majlis: false,
+                accent_hover: Color32::from_rgb(38, 139, 210),
+                focus: Color32::from_rgb(38, 139, 210),
             },
         }
     }
@@ -824,14 +979,17 @@ impl Tokens {
     /// [`crate::widgets::text_field`], because `Visuals::selection` also fills selected list rows
     /// and slider trails, which must keep the theme's.
     pub fn field_selection(&self) -> Color32 {
-        if self.pro { Color32::from_gray(if self.dark() { 96 } else { 201 }) } else { self.accent_soft }
+        if self.pro && !self.majlis { Color32::from_gray(if self.dark() { 96 } else { 201 }) } else { self.accent_soft }
     }
 
     /// The 1 px ring round a slider knob, if the theme draws one: the Pro layouts' dark ring, and
     /// in the light themes the dim text colour, so their white knob stands out from a pale panel
     /// (#7927). The dark Studio-layout themes need none; Classic draws a bevelled knob instead.
     pub fn knob_outline(&self) -> Option<Color32> {
-        if self.pro {
+        // Al Majlis' knob is the accent, which needs no ring.
+        if self.majlis {
+            None
+        } else if self.pro {
             Some(Color32::from_gray(40))
         } else if self.dark() {
             None
@@ -1038,7 +1196,9 @@ pub fn apply(ctx: &egui::Context, kind: ThemeKind) {
     v.window_shadow = egui::Shadow { offset: [0, 10], blur: 32, spread: 0, color: t.shadow };
     v.popup_shadow = egui::Shadow { offset: [0, 6], blur: 20, spread: 0, color: t.shadow };
     v.selection.bg_fill = if t.bevel || t.pro { t.accent } else { t.accent_soft };
-    v.selection.stroke = Stroke::new(1.0, t.accent_text);
+    // Al Majlis' accent text is a darker blue for small text on surfaces; text on a selection
+    // (the accent fill) is white.
+    v.selection.stroke = Stroke::new(1.0, if t.majlis { t.primary_text } else { t.accent_text });
     v.slider_trailing_fill = true;
     v.handle_shape = egui::style::HandleShape::Circle;
     v.striped = false;
@@ -1072,8 +1232,9 @@ pub fn apply(ctx: &egui::Context, kind: ThemeKind) {
             (TextStyle::Monospace, FontId::monospace(12.0)),
         ]
         .into();
-        s.spacing.item_spacing = egui::vec2(8.0, 6.0);
-        s.spacing.button_padding = egui::vec2(10.0, 4.0);
+        // Al Majlis is airy: 6 pt between items and 10 × 5 pt inside buttons.
+        s.spacing.item_spacing = if t.majlis { egui::vec2(6.0, 6.0) } else { egui::vec2(8.0, 6.0) };
+        s.spacing.button_padding = if t.majlis { egui::vec2(10.0, 5.0) } else { egui::vec2(10.0, 4.0) };
         s.spacing.interact_size = egui::vec2(24.0, 24.0);
         s.spacing.slider_width = 150.0;
         s.spacing.combo_width = 120.0;

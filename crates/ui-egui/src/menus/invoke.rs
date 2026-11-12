@@ -689,7 +689,9 @@ fn invoke_window_command(app: &mut PhotocraftApp, ctx: &egui::Context, id: &str)
         | "window.theme.breezeLight"
         | "window.theme.breezeDark"
         | "window.theme.softLight"
-        | "window.theme.softDark" => {
+        | "window.theme.softDark"
+        | "window.theme.majlisLight"
+        | "window.theme.majlisDark" => {
             let theme = crate::theme::ThemeKind::from_name(&id["window.theme.".len()..]).unwrap_or_default();
             app.set_theme(ctx, theme);
             Some(Ok(Value::Null))

@@ -240,7 +240,8 @@ pub fn show(ui: &Ui, rect: Rect, view: &mut View, flip: bool, aspect: f32, overs
         }
         .shrink(3.0);
         let hot = resp.dragged() || resp.hover_pos().is_some_and(|p| thumb.expand(3.0).contains(p));
-        let fill = if hot { t.text_dim } else { thumb_color(&t) };
+        // Al Majlis: the pressed colour, the muted text colour under the pointer.
+        let fill = if hot { if t.majlis { t.text_faint } else { t.text_dim } } else { thumb_color(&t) };
         painter.rect_filled(thumb, CornerRadius::same((thumb.width().min(thumb.height()) / 2.0) as u8), fill);
         if resp.hovered() || resp.dragged() {
             ui.ctx().set_cursor_icon(egui::CursorIcon::Default);
@@ -250,7 +251,7 @@ pub fn show(ui: &Ui, rect: Rect, view: &mut View, flip: bool, aspect: f32, overs
 }
 
 fn thumb_color(t: &crate::theme::Tokens) -> Color32 {
-    t.text_faint
+    if t.majlis { t.pressed } else { t.text_faint }
 }
 
 #[cfg(test)]

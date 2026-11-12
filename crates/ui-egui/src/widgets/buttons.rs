@@ -172,7 +172,22 @@ fn button_impl_h(ui: &mut Ui, label: &str, min_width: f32, height: Option<f32>, 
     if resp.has_focus() {
         // Keyboard focus (Tab); clicks don't focus egui buttons.
         let r = if t.pro { h / 2.0 } else { t.radius_sm } + 2.0;
-        ui.painter().rect_stroke(rect.expand(2.0), r, Stroke::new(2.0, t.accent), StrokeKind::Outside);
+        ui.painter().rect_stroke(rect.expand(2.0), r, Stroke::new(2.0, if t.majlis { t.focus } else { t.accent }), StrokeKind::Outside);
+    }
+    if t.majlis {
+        // Al Majlis buttons: pills; primary = the accent (darker while hovered or pressed),
+        // secondary = the raised fill with a hairline (pressed colour while hovered or pressed).
+        let down = resp.is_pointer_button_down_on();
+        let r = h / 2.0;
+        let active = ui.is_enabled() && (resp.hovered() || down);
+        if primary {
+            ui.painter().rect_filled(rect, r, if active { t.accent_hover } else { bg });
+        } else {
+            ui.painter().rect_filled(rect, r, if active { t.pressed } else { t.field });
+            ui.painter().rect_stroke(rect, r, Stroke::new(1.0, t.field_border), StrokeKind::Inside);
+        }
+        ui.painter().galley(rect.center() - galley.size() / 2.0, galley, fg);
+        return resp;
     }
     if t.pro {
         // Spectrum buttons: fully rounded; primary = filled accent, secondary = outline.
@@ -253,7 +268,9 @@ pub fn check_box_fill(on: bool, pressed: bool, t: &Tokens) -> Color32 {
 /// Paint a check box in `rect`: [`check_box_fill`] with a white tick when `on`, else an
 /// outline that brightens while `hovered` or `pressed`.
 pub fn check_box(p: &egui::Painter, rect: Rect, on: bool, hovered: bool, pressed: bool, t: &Tokens) {
-    p.rect_filled(rect, 2.0, check_box_fill(on, pressed, t));
+    // Al Majlis rounds its check boxes a little more.
+    let radius = if t.majlis { 4.0 } else { 2.0 };
+    p.rect_filled(rect, radius, check_box_fill(on, pressed, t));
     if on {
         let a = rect.left_center() + vec2(3.0, 0.5);
         let b = rect.center_bottom() + vec2(-1.0, -3.5);
@@ -262,6 +279,6 @@ pub fn check_box(p: &egui::Painter, rect: Rect, on: bool, hovered: bool, pressed
         p.line_segment([a, b], tick);
         p.line_segment([b, c], tick);
     } else {
-        p.rect_stroke(rect, 2.0, Stroke::new(1.5, if hovered || pressed { t.text_dim } else { t.text_faint }), StrokeKind::Inside);
+        p.rect_stroke(rect, radius, Stroke::new(1.5, if hovered || pressed { t.text_dim } else { t.text_faint }), StrokeKind::Inside);
     }
 }

@@ -362,3 +362,40 @@ fn breeze_themes_parse_and_meet_text_contrast() {
         assert!(contrast(t.caption_close_text, t.caption_close) >= 4.5, "{kind:?}: close button glyph");
     }
 }
+
+/// Al Majlis Light and Dark: the Pro layout with Al Majlis' look-sheet colours and shapes.
+#[test]
+fn majlis_themes_follow_the_look_sheet() {
+    for (kind, id, dark) in [(ThemeKind::MajlisLight, "majlisLight", false), (ThemeKind::MajlisDark, "majlisDark", true)] {
+        let t = Tokens::for_kind(kind);
+        assert!(t.majlis && t.pro && !t.bevel && kind.is_pro() && kind.is_majlis(), "{kind:?}");
+        assert_eq!(t.dark(), dark, "{kind:?}");
+        assert_eq!(kind.id(), id);
+        assert_eq!(ThemeKind::from_name(id), Some(kind));
+        assert_eq!(ThemeKind::from_name(kind.label()), Some(kind));
+        assert!(ThemeKind::ALL.contains(&kind));
+        assert_eq!((t.radius_sm, t.radius, t.radius_lg), (8.0, 12.0, 16.0), "{kind:?}: control, card and window corners");
+        assert_eq!((t.accent, t.primary_bg, t.primary_text), (Color32::from_rgb(0x25, 0x63, 0xEB), Color32::from_rgb(0x25, 0x63, 0xEB), Color32::WHITE));
+        for bg in [t.card, t.chrome, t.field, t.hover, t.tab_strip, t.row_selected] {
+            assert!(contrast(t.text, bg) >= 4.5, "{kind:?} text on {bg:?}");
+            assert!(contrast(t.text_dim, bg) >= 3.0, "{kind:?} dim text on {bg:?}");
+            assert!(contrast(t.icon, bg) >= 3.0, "{kind:?} icon on {bg:?}");
+        }
+        assert!(contrast(t.primary_text, t.accent) >= 4.5, "{kind:?}: white on the accent");
+        assert!(contrast(t.primary_text, t.accent_hover) >= 4.5, "{kind:?}: white on the hovered accent");
+        assert_eq!(t.knob_outline(), None, "{kind:?}: the accent knob needs no ring");
+        assert_eq!(t.field_selection(), t.accent_soft, "{kind:?}");
+    }
+    let (l, d) = (Tokens::for_kind(ThemeKind::MajlisLight), Tokens::for_kind(ThemeKind::MajlisDark));
+    assert_eq!((l.dock, l.card, l.field, l.separator), (Color32::from_rgb(0xF2, 0xF1, 0xEE), Color32::WHITE, Color32::from_rgb(0xF6, 0xF5, 0xF3), Color32::from_rgb(0xEE, 0xEE, 0xEE)));
+    assert_eq!((d.dock, d.card, d.field, d.separator), (Color32::from_rgb(0x0D, 0x0D, 0x0F), Color32::from_rgb(0x17, 0x17, 0x1A), Color32::from_rgb(0x20, 0x20, 0x24), Color32::from_rgb(0x29, 0x29, 0x2B)));
+    for kind in ThemeKind::ALL {
+        assert_eq!(Tokens::for_kind(kind).majlis, kind.is_majlis(), "{kind:?}");
+    }
+    // The airy Al Majlis spacing applies only to its themes.
+    let ctx = egui::Context::default();
+    apply(&ctx, ThemeKind::MajlisLight);
+    assert_eq!((ctx.global_style().spacing.item_spacing, ctx.global_style().spacing.button_padding), (egui::vec2(6.0, 6.0), egui::vec2(10.0, 5.0)));
+    apply(&ctx, ThemeKind::ProLight);
+    assert_eq!(ctx.global_style().spacing.button_padding, egui::vec2(10.0, 4.0));
+}

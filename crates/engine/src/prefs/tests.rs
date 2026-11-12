@@ -85,12 +85,12 @@ fn home_recent_files_preference_defaults_on_persists_and_resets() {
 #[test]
 fn appearance_defaults_and_legacy_theme_migrate() {
     let p = Preferences::default();
-    // New users keep Photoshop's default; following the system is opt-in.
+    // New users start in the Al Majlis themes (dark); following the system is opt-in.
     assert_eq!(p.interface.appearance_mode, AppearanceMode::Dark);
-    assert_eq!(p.interface.dark_theme, DarkTheme::ProMedium);
-    assert_eq!(p.interface.light_theme, LightTheme::ProLight);
+    assert_eq!(p.interface.dark_theme, DarkTheme::MajlisDark);
+    assert_eq!(p.interface.light_theme, LightTheme::MajlisLight);
     for (theme, mode, dark, light) in
-        [("pro", AppearanceMode::Dark, DarkTheme::Pro, LightTheme::ProLight), ("classic", AppearanceMode::Light, DarkTheme::ProMedium, LightTheme::Classic)]
+        [("pro", AppearanceMode::Dark, DarkTheme::Pro, LightTheme::MajlisLight), ("classic", AppearanceMode::Light, DarkTheme::MajlisDark, LightTheme::Classic)]
     {
         let mut s = Session::new();
         s.load_prefs_json(&json!({"interface": {"theme": theme}}).to_string()).unwrap();
@@ -1064,4 +1064,24 @@ fn the_web_build_caps_memory_usage() {
         assert_eq!(honoured_memory_usage_mb(stored, true), honoured, "web, {stored} MB");
         assert_eq!(honoured_memory_usage_mb(stored, false), stored, "desktop, {stored} MB");
     }
+}
+
+/// The Al Majlis themes are the fresh-profile defaults and can be chosen like any other.
+#[test]
+fn majlis_themes_are_defaults_and_choices() {
+    assert_eq!(Theme::default(), Theme::MajlisDark);
+    assert_eq!((DarkTheme::default(), LightTheme::default()), (DarkTheme::MajlisDark, LightTheme::MajlisLight));
+    let mut s = Session::new();
+    s.execute("prefs.set", json!({"values": {"interface.lightTheme": "proLight", "interface.darkTheme": "pro"}})).unwrap();
+    for (mode, theme) in [("light", "majlisLight"), ("dark", "majlisDark")] {
+        s.execute(
+            "prefs.set",
+            json!({"values": {"interface.lightTheme": "majlisLight", "interface.darkTheme": "majlisDark", "interface.appearanceMode": mode, "interface.theme": theme}}),
+        )
+        .unwrap();
+        assert_eq!(s.prefs().interface.light_theme, LightTheme::MajlisLight);
+        assert_eq!(s.prefs().interface.dark_theme, DarkTheme::MajlisDark);
+        assert_eq!(s.prefs().interface.appearance_mode.name(), mode);
+    }
+    assert!(s.execute("prefs.set", json!({"path": "interface.darkTheme", "value": "majlisLight"})).is_err());
 }

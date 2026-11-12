@@ -37,7 +37,7 @@ fn photocraft_gets_a_mac_app_menu() {
     );
     let quit = l.bar.find("file.exit").unwrap();
     assert_eq!((quit.label.as_str(), quit.shortcut.as_deref()), ("Quit PhotoCraft", Some("Cmd+Q")));
-    assert_eq!(l.bar.find("help.about").unwrap().label, "About PhotoCraft");
+    assert_eq!(l.bar.find("help.about").unwrap().label, "About Al Majlis Design");
 }
 
 #[test]

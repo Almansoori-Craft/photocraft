@@ -13,6 +13,18 @@ pub fn style_spectrum_popup_menu(ui: &mut Ui) {
     }
     ui.spacing_mut().button_padding = vec2(10.0, 4.0);
     let v = &mut ui.style_mut().visuals;
+    if t.majlis {
+        // Al Majlis menus: a row hovers in the raised colour with rounded corners, text unchanged.
+        let r = CornerRadius::same(t.radius_sm as u8);
+        v.widgets.hovered.weak_bg_fill = t.hover;
+        v.widgets.hovered.bg_fill = t.hover;
+        v.widgets.hovered.fg_stroke = Stroke::new(1.0, t.text);
+        v.widgets.hovered.bg_stroke = Stroke::NONE;
+        v.widgets.inactive.corner_radius = r;
+        v.widgets.hovered.corner_radius = r;
+        v.widgets.active.corner_radius = r;
+        return;
+    }
     v.widgets.hovered.weak_bg_fill = t.accent;
     v.widgets.hovered.bg_fill = t.accent;
     v.widgets.hovered.fg_stroke = Stroke::new(1.0, Color32::WHITE);
@@ -108,6 +120,12 @@ pub fn pill_tab(ui: &mut Ui, label: &str, selected: bool) -> Response {
     let galley = ui.painter().layout_no_wrap(translated.to_string(), font, t.text);
     let size = vec2(galley.size().x + 20.0, 24.0);
     let (rect, resp) = ui.allocate_exact_size(size, Sense::click());
+    if t.majlis {
+        let color = majlis_pill(ui.painter(), rect, &t, selected, resp.hovered());
+        ui.painter().galley_with_override_text_color(rect.center() - galley.size() / 2.0, galley, color);
+        resp.widget_info(|| egui::WidgetInfo::labeled(egui::Role::Button, true, translated));
+        return resp;
+    }
     if selected {
         surface(ui, rect, t.hover, true);
         if !t.bevel {
@@ -120,6 +138,28 @@ pub fn pill_tab(ui: &mut Ui, label: &str, selected: bool) -> Response {
     ui.painter().galley_with_override_text_color(rect.center() - galley.size() / 2.0, galley, color);
     resp.widget_info(|| egui::WidgetInfo::labeled(egui::Role::Button, true, translated));
     resp
+}
+
+/// Al Majlis tab strip: the rounded track that holds the pill tabs (raised fill, 1 pt hairline,
+/// corners half its height).
+pub fn majlis_track(p: &egui::Painter, r: Rect, t: &Tokens) {
+    let radius = r.height() / 2.0;
+    p.rect_filled(r, radius, t.tab_strip);
+    p.rect_stroke(r, radius, Stroke::new(1.0, t.separator), StrokeKind::Inside);
+}
+
+/// One Al Majlis pill tab (or chip) in `r`: the selected one filled with the accent; the others
+/// unfilled. Returns the label colour: white on the accent, the text colour under the pointer,
+/// otherwise the muted text colour.
+pub fn majlis_pill(p: &egui::Painter, r: Rect, t: &Tokens, selected: bool, hovered: bool) -> Color32 {
+    if selected {
+        p.rect_filled(r, r.height() / 2.0, t.accent);
+        t.primary_text
+    } else if hovered {
+        t.text
+    } else {
+        t.text_faint
+    }
 }
 
 /// Small caps section label.

@@ -266,6 +266,10 @@ fn value_field_box(
     }
     if ui.memory(|m| m.has_focus(resp.id)) {
         crate::field_wheel::set_focused(ui.ctx(), resp.id, slot.id);
+        if t.majlis {
+            // Al Majlis fields show their keyboard focus as a 1.5 pt accent outline.
+            ui.painter().rect_stroke(rect, t.radius_sm, Stroke::new(1.5, t.accent), StrokeKind::Inside);
+        }
     }
     (resp, rect)
 }

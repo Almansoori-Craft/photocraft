@@ -46,6 +46,7 @@ pub(super) fn selected_theme(interface: &prefs::Interface, system: Option<egui::
             LightTheme::Adwaita => ThemeKind::Adwaita,
             LightTheme::BreezeLight => ThemeKind::BreezeLight,
             LightTheme::SoftLight => ThemeKind::SoftLight,
+            LightTheme::MajlisLight => ThemeKind::MajlisLight,
         }
     } else {
         match interface.dark_theme {
@@ -56,6 +57,7 @@ pub(super) fn selected_theme(interface: &prefs::Interface, system: Option<egui::
             DarkTheme::AdwaitaDark => ThemeKind::AdwaitaDark,
             DarkTheme::BreezeDark => ThemeKind::BreezeDark,
             DarkTheme::SoftDark => ThemeKind::SoftDark,
+            DarkTheme::MajlisDark => ThemeKind::MajlisDark,
         }
     }
 }
@@ -97,6 +99,7 @@ pub(crate) fn step_brightness(app: &mut PhotocraftApp, ctx: &egui::Context, ligh
 }
 
 pub(super) const LIGHT_THEME_OPTIONS: &[(&str, ThemeKind)] = &[
+    ("majlisLight", ThemeKind::MajlisLight),
     ("proLight", ThemeKind::ProLight),
     ("proLightGray", ThemeKind::ProLightGray),
     ("studioLight", ThemeKind::StudioLight),
@@ -107,6 +110,7 @@ pub(super) const LIGHT_THEME_OPTIONS: &[(&str, ThemeKind)] = &[
 ];
 
 pub(super) const DARK_THEME_OPTIONS: &[(&str, ThemeKind)] = &[
+    ("majlisDark", ThemeKind::MajlisDark),
     ("proMedium", ThemeKind::ProMedium),
     ("pro", ThemeKind::Pro),
     ("studio", ThemeKind::Studio),

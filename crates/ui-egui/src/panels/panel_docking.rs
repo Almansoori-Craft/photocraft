@@ -566,7 +566,9 @@ pub(crate) fn show(app: &mut PhotocraftApp, ui: &mut egui::Ui) {
     style.tab_background = if t.tab_strip.a() == 0 { t.card } else { t.tab_strip };
     style.active_background = t.card;
     style.text = t.text;
-    style.inactive_text = t.text_dim;
+    // Al Majlis: unselected tab names in the muted text colour. (The shared docking crate
+    // draws the tabs themselves, as flat rectangles: only their colours follow the theme.)
+    style.inactive_text = if t.majlis { t.text_faint } else { t.text_dim };
     style.border = egui::Stroke::new(1.0, t.card_border);
     style.accent = t.accent;
     style.right_to_left = crate::direction::is_rtl();

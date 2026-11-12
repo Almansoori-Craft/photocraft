@@ -238,7 +238,7 @@ pub fn toolbar(app: &mut PhotocraftApp, ui: &mut egui::Ui) {
                                                     for &item in slot.iter() {
                                                         let (r, ir) = ui.allocate_exact_size(vec2(fw, 26.0), Sense::click());
                                                         if ir.hovered() {
-                                                            ui.painter().rect_filled(r, 3.0, t.hover);
+                                                            ui.painter().rect_filled(r, if t.majlis { t.radius_sm } else { 3.0 }, t.hover);
                                                         }
                                                         if item == tool {
                                                             ui.painter().rect_filled(

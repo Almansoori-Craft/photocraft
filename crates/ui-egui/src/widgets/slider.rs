@@ -193,9 +193,11 @@ fn slider_with(ui: &mut Ui, value: &mut f32, range: std::ops::RangeInclusive<f32
             }
         }
         _ => {
-            painter.rect_filled(track, 2.0, t.field_border);
+            // Al Majlis: the track in the pressed colour, the filled part in the accent.
+            let radius = if t.majlis { track.height() / 2.0 } else { 2.0 };
+            painter.rect_filled(track, radius, if t.majlis { t.pressed } else { t.field_border });
             let filled = Rect::from_min_max(track.min, pos2(knob_x, track.max.y));
-            painter.rect_filled(filled, 2.0, if t.bevel { t.accent } else { t.text_dim });
+            painter.rect_filled(filled, radius, if t.bevel || t.majlis { t.accent } else { t.text_dim });
         }
     }
     let knob = pos2(knob_x, rect.center().y);
@@ -205,7 +207,14 @@ fn slider_with(ui: &mut Ui, value: &mut f32, range: std::ops::RangeInclusive<f32
     } else {
         let kr = if t.pro { 6.0 } else { 7.0 };
         painter.circle_filled(knob + vec2(0.0, 1.0), kr + 0.5, Color32::from_black_alpha(90));
-        painter.circle_filled(knob, kr, if t.pro { Color32::from_gray(236) } else { Color32::WHITE });
+        let knob_fill = if t.majlis {
+            t.accent
+        } else if t.pro {
+            Color32::from_gray(236)
+        } else {
+            Color32::WHITE
+        };
+        painter.circle_filled(knob, kr, knob_fill);
         if let Some(outline) = t.knob_outline() {
             painter.circle_stroke(knob, kr, Stroke::new(1.0, outline));
         }

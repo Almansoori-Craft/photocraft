@@ -92,7 +92,7 @@ fn stop_message(_: &mut Session, p: &Value) -> Result<Value> {
 fn photoshop_step_run(_: &mut Session, p: &Value) -> Result<Value> {
     let name = jstr(p, "name").filter(|n| !n.is_empty()).unwrap_or("this step");
     let event = jstr(p, "event").unwrap_or("?");
-    Err(EngineError::Other(format!("Photoshop step \"{name}\" ({event}) has no PhotoCraft equivalent yet; switch it off in the Actions panel to skip it")))
+    Err(EngineError::Other(format!("Photoshop step \"{name}\" ({event}) has no Al Majlis Design equivalent yet; switch it off in the Actions panel to skip it")))
 }
 
 pub fn specs() -> Vec<CommandSpec> {

@@ -111,6 +111,10 @@ fn text_field_in(
     child.spacing_mut().interact_size.y = inner.height();
     child.style_mut().visuals.selection.bg_fill = t.field_selection();
     let response = child.add(edit);
+    if t.majlis && response.has_focus() {
+        // Al Majlis fields show their keyboard focus as a 1.5 pt accent outline.
+        ui.painter().rect_stroke(rect, t.radius_sm, Stroke::new(1.5, t.accent), StrokeKind::Inside);
+    }
     if let Some(b) = bounded
         && response.changed()
     {
