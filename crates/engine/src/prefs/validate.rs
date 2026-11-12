@@ -51,8 +51,12 @@ pub const HIDDEN_UNTIL_IMPLEMENTED: &[&str] = &[
 
 /// Is the preference at `path` (`"section.key"`) hidden from the Preferences dialog?
 pub fn is_hidden(path: &str) -> bool {
-    HIDDEN_UNTIL_IMPLEMENTED.contains(&path) || (!cfg!(target_os = "linux") && LINUX_ONLY.contains(&path))
+    HIDDEN_UNTIL_IMPLEMENTED.contains(&path) || (!cfg!(target_os = "linux") && LINUX_ONLY.contains(&path)) || MAJLIS_HIDDEN.contains(&path)
 }
+
+/// Majlis Studio: updates come only through Al Majlis (owner, 2026-11-12), so the setting for the
+/// upstream release check at start isn't shown. It still loads, saves and round-trips.
+pub const MAJLIS_HIDDEN: &[&str] = &["general.automaticallyCheckUpdates"];
 
 /// Preferences that only do something on Linux; the dialog doesn't show them elsewhere. They
 /// still load, save and round-trip on every platform.

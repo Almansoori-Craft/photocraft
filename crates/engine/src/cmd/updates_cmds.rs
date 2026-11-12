@@ -119,7 +119,9 @@ pub fn specs() -> Vec<CommandSpec> {
         CommandSpec {
             id: "help.checkForUpdates",
             label: "Check for Updates…",
-            menu: &["Help"],
+            // Majlis Studio: updates come only through Al Majlis (owner, 2026-11-12). No menu item,
+            // so the menus, the command palette and the shortcut list don't offer it.
+            menu: &[],
             shortcut: None,
             params: "{}",
             enabled,

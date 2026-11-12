@@ -605,6 +605,12 @@ fn linux_only_preferences_show_only_on_linux() {
 }
 
 #[test]
+fn the_upstream_update_check_setting_is_not_shown() {
+    // Majlis Studio: updates come only through Al Majlis (owner, 2026-11-12).
+    assert!(is_hidden("general.automaticallyCheckUpdates"));
+}
+
+#[test]
 fn the_default_pressure_curve_is_linear() {
     let c = PressureCurve::new(&Preferences::default().tools.pressure_curve);
     assert!(c.is_linear());

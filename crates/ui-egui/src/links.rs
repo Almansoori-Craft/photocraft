@@ -25,7 +25,6 @@ pub fn open(app: &mut PhotocraftApp, ctx: &egui::Context, url: &str) -> Value {
     json!({"url": url})
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -58,13 +57,10 @@ mod tests {
     }
 
     #[test]
-    fn help_menu_lists_no_project_links_then_separator_then_system_info_and_about() {
+    fn help_menu_lists_no_project_links_or_update_check_only_system_info_and_about() {
         let app = PhotocraftApp::new(photocraft_engine::Session::new(), Default::default());
         let help: Vec<String> = crate::menus::menu_items(&app).into_iter().filter(|i| i.path == ["Help"]).map(|i| i.id).collect();
-        assert_eq!(
-            help,
-            ["help.checkForUpdates", "---", "help.systemInfo", "help.about"]
-        );
+        assert_eq!(help, ["help.systemInfo", "help.about"]);
         for (id, _) in COMMANDS {
             assert!(crate::menus::is_live(id) && crate::menus::is_enabled(&app, id), "{id}");
         }

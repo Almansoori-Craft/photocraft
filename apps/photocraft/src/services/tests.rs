@@ -182,8 +182,9 @@ fn open_filters_keep_literal_extensions_on_windows_and_macos() {
 }
 
 #[test]
-fn native_services_provide_update_transport() {
-    assert!(native(None).check_updates.is_some());
+fn native_services_offer_no_upstream_update_check() {
+    // Majlis Studio: updates come only through Al Majlis (owner, 2026-11-12).
+    assert!(native(None).check_updates.is_none());
 }
 
 #[test]

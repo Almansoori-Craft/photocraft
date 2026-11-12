@@ -181,14 +181,12 @@ pub fn menu_items(app: &PhotocraftApp) -> Vec<MenuItem> {
             items.insert(after + 1 + k, it);
         }
     }
-    // Keep the update command with the links, ahead of System Info and About.
-    if let Some(at) = items.iter().position(|i| i.id == "help.checkForUpdates") {
-        let update = items.remove(at);
-        let before = items.iter().position(|i| i.id == "help.systemInfo" || i.id == "help.about").unwrap_or(items.len());
-        items.insert(before, update);
-    }
-    // Help: the link items and update check, a separator, then System Info and About.
-    if let Some(at) = items.iter().position(|i| i.id == "help.systemInfo" || i.id == "help.about") {
+    // Help: any items ahead of System Info and About, then a separator. Majlis Studio: no update
+    // check or project links (owner, 2026-11-12), so usually nothing comes first and no separator
+    // opens the menu.
+    if let Some(at) = items.iter().position(|i| i.id == "help.systemInfo" || i.id == "help.about")
+        && items[..at].iter().any(|i| i.path.first().map(String::as_str) == Some("Help"))
+    {
         items.insert(
             at,
             MenuItem { id: "---".into(), label: "---".into(), path: vec!["Help".into()], shortcut: None, enabled: false, checked: None, color: None },
