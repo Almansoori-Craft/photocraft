@@ -30,6 +30,8 @@ log = { workspace = true }
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 # Al Majlis fork (F5a): window.photocraft (api.rs) speaks JSON.
 serde_json = { workspace = true }
+# Al Majlis fork (Studio 2c): photo Smart Object bytes cross the JSON channel as base64.
+base64 = "0.22"
 # `wgpu` pulls egui-wgpu's defaults: WebGPU plus the WebGL2 fallback.
 eframe = { workspace = true, features = ["wgpu", "accesskit", "clipboard"] }
 rfd = { workspace = true }

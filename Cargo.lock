@@ -5459,6 +5459,7 @@ dependencies = [
 name = "photocraft-web"
 version = "0.19.0"
 dependencies = [
+ "base64 0.22.1",
  "eframe",
  "egui",
  "js-sys",

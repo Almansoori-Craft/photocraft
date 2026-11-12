@@ -354,6 +354,9 @@ pub fn authorize_engine_command(id: &str, params: &Value) -> Result<(), Automati
             | "layer.smartObjects.saveContents"
             | "layer.smartObjects.exportSvg"
             | "layer.smartObjects.updateSvg"
+            // Al Majlis fork (Studio 2c): the photo contents handoff is in memory too.
+            | "layer.smartObjects.exportPng"
+            | "layer.smartObjects.updatePng"
     );
     if (id.starts_with("layer.smartObjects.") && !in_memory_smart_command)
         || matches!(
@@ -409,7 +412,9 @@ fn params_contain_ambient_path(id: &str, params: &Value) -> bool {
         | "layer.smartObjects.editContents"
         | "layer.smartObjects.convertToLayers"
         | "layer.smartObjects.exportSvg"
-        | "layer.smartObjects.updateSvg" => &["path"],
+        | "layer.smartObjects.updateSvg"
+        | "layer.smartObjects.exportPng"
+        | "layer.smartObjects.updatePng" => &["path"],
         "image.mode.rgb" | "image.mode.grayscale" | "image.mode.cmyk" | "image.mode.lab" => &["profile"],
         "edit.assignProfile" | "edit.convertToProfile" | "edit.profileInfo" | "view.proofSetup" | "view.gamutWarning" => &["profile"],
         // New Document's Color Profile (#321) can name an .icc file.

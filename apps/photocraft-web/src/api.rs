@@ -12,6 +12,9 @@
 //! await photocraft.openFile("card.png", bytes)               // opened as a dropped file is
 //! photocraft.captureDownloads(true)                           // saves stay in the page…
 //! photocraft.files(); await photocraft.readFile("card.png")  // …to be read back
+//! // Al Majlis fork (Studio 2c): a photo Smart Object's contents out and back, as PNG bytes.
+//! const out = await photocraft.exportSmartObjectBytes(layerId) // {bytes, fingerprint, contentsId, document, …}
+//! await photocraft.replaceSmartObjectBytes(layerId, {...out, bytes: edited}) // refused when stale
 //! ```
 //!
 //! Results resolve with the method's `result`; errors reject with an `Error`.
@@ -116,6 +119,67 @@ fn request(method: &str, params: Value) -> js_sys::Promise {
     p
 }
 
+fn rejected(msg: &str) -> js_sys::Promise {
+    js_sys::Promise::reject(&js_sys::Error::new(msg).into())
+}
+
+fn get(obj: &JsValue, key: &str) -> JsValue {
+    js_sys::Reflect::get(obj, &key.into()).unwrap_or(JsValue::UNDEFINED)
+}
+
+/// A non-negative integer id from JS (a number, as `inspect` reports layer ids).
+fn id_of(v: &JsValue) -> Option<u64> {
+    v.as_f64().filter(|n| n.is_finite() && *n >= 0.0 && n.fract() == 0.0 && *n <= 9_007_199_254_740_991.0).map(|n| n as u64)
+}
+
+/// `exportSmartObjectBytes(layerId)`: the raster Smart Object's own contents as PNG bytes at their
+/// native size, with the identity `replaceSmartObjectBytes` checks.
+fn export_smart_object_bytes(layer: JsValue) -> js_sys::Promise {
+    use base64::Engine as _;
+    let Some(layer) = id_of(&layer) else { return rejected("exportSmartObjectBytes: layerId must be a layer id") };
+    let reply = request("engine.execute", json!({"command": "layer.smartObjects.exportPng", "params": {"layer": layer}}));
+    wasm_bindgen_futures::future_to_promise(async move {
+        let r = wasm_bindgen_futures::JsFuture::from(reply).await?;
+        let encoded = get(&r, "pngBase64").as_string().ok_or_else(|| js_sys::Error::new("exportSmartObjectBytes: no contents"))?;
+        let bytes = base64::engine::general_purpose::STANDARD.decode(encoded).map_err(|e| js_sys::Error::new(&format!("exportSmartObjectBytes: {e}")))?;
+        let out = js_sys::Object::new();
+        js_sys::Reflect::set(&out, &"bytes".into(), &js_sys::Uint8Array::from(bytes.as_slice()))?;
+        for key in ["fingerprint", "contentsId", "document", "layer", "width", "height", "fileName"] {
+            js_sys::Reflect::set(&out, &key.into(), &get(&r, key))?;
+        }
+        Ok(out.into())
+    })
+}
+
+/// `replaceSmartObjectBytes(layerId, {bytes, fingerprint, contentsId, document})`: write edited PNG
+/// bytes back; PhotoCraft refuses when the contents changed since the export (stale identity).
+fn replace_smart_object_bytes(layer: JsValue, args: JsValue) -> js_sys::Promise {
+    use base64::Engine as _;
+    let Some(layer) = id_of(&layer) else { return rejected("replaceSmartObjectBytes: layerId must be a layer id") };
+    if !args.is_object() {
+        return rejected("replaceSmartObjectBytes: pass {bytes, fingerprint, contentsId, document}");
+    }
+    let raw = get(&args, "bytes");
+    let bytes = if let Some(a) = raw.dyn_ref::<js_sys::Uint8Array>() {
+        a.to_vec()
+    } else if let Some(b) = raw.dyn_ref::<js_sys::ArrayBuffer>() {
+        js_sys::Uint8Array::new(b).to_vec()
+    } else {
+        return rejected("replaceSmartObjectBytes: bytes must be a Uint8Array or ArrayBuffer of PNG data");
+    };
+    let (Some(fingerprint), Some(contents), Some(document)) = (get(&args, "fingerprint").as_string(), id_of(&get(&args, "contentsId")), id_of(&get(&args, "document")))
+    else {
+        return rejected("replaceSmartObjectBytes: fingerprint, contentsId and document come from exportSmartObjectBytes");
+    };
+    request(
+        "engine.execute",
+        json!({"command": "layer.smartObjects.updatePng", "params": {
+            "layer": layer, "document": document, "contentsId": contents, "fingerprint": fingerprint,
+            "pngBase64": base64::engine::general_purpose::STANDARD.encode(&bytes),
+        }}),
+    )
+}
+
 fn set_fn(obj: &js_sys::Object, name: &str, f: JsValue) -> Result<(), JsValue> {
     js_sys::Reflect::set(obj, &name.into(), &f).map(|_| ())
 }
@@ -175,6 +239,17 @@ pub fn install() -> Result<(), JsValue> {
             JsValue::from_bool(queued)
         })
         .into_js_value(),
+    )?;
+    // Al Majlis fork (Studio 2c): exportContents / replaceContents need a file path the web lacks.
+    set_fn(
+        &obj,
+        "exportSmartObjectBytes",
+        Closure::<dyn Fn(JsValue) -> js_sys::Promise>::new(export_smart_object_bytes).into_js_value(),
+    )?;
+    set_fn(
+        &obj,
+        "replaceSmartObjectBytes",
+        Closure::<dyn Fn(JsValue, JsValue) -> js_sys::Promise>::new(replace_smart_object_bytes).into_js_value(),
     )?;
     set_fn(&obj, "captureDownloads", Closure::<dyn Fn(bool)>::new(|on: bool| CAPTURE.with(|c| c.set(on))).into_js_value())?;
     set_fn(

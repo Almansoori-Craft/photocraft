@@ -1,13 +1,8 @@
-PhotoCraft app icon (photocraft.svg, photocraft-small.svg and every file derived from them in
-this directory: photocraft-1024.png, photocraft.icns, photocraft.ico, hicolor/).
+Al Majlis Design app icon: every icon file in this directory (photocraft.svg, photocraft-small.svg, the PNG renders,
+photocraft.icns, photocraft.ico, hicolor/).
 
-Original artwork made for this project by the project owner: an engraving-style drawing created
-in ArtCraft, then vectorised. No third-party material. Licensed like the rest of PhotoCraft,
-under either of
+Al Majlis Studio icon, made for the Ministry with Higgsfield (Ideogram Vector), 2026-11-12.
 
-  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
-  * MIT license (https://opensource.org/licenses/MIT)
-
-at your option.
-
-Regenerate the derived files with packaging/icons.sh.
+It replaces the earlier PhotoCraft artwork (the nine-tailed kitsune), which is no longer in this repository's
+icon files. The MIT OR Apache-2.0 licence of the code does not describe this artwork; its use is
+the Ministry's, for Al Majlis Studio.

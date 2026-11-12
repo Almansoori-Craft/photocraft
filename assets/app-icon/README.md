@@ -1,46 +1,17 @@
-# PhotoCraft app icon
+# Al Majlis Design app icon
 
-A **nine-tailed kitsune with a brow diamond**: an engraving portrait, seated, looking back at the
-viewer, in the Crafting Apps' owl-template framing (full-bleed field, head and body filling the
-tile, tails running off the edges).
+Al Majlis Studio icon, made for the Ministry with Higgsfield (Ideogram Vector), 2026-11-12. Owner approved 2026-11-12.
 
-## Palette
-
-Exactly three colours:
-
-| Colour | Hex | Used for |
-|---|---|---|
-| Ink | `#0b0b0c` | line work and contours |
-| Paper | `#efe9dc` | the figure |
-| PhotoCraft blue (app colour) | `#2f7bf5` | the full-bleed field |
-
-## Geometry
-
-A 512-unit tile (`viewBox="0 0 512 512"`), rounded square with `rx=112`, no border. The macOS
-renders pad it onto Apple's 824/1024 icon grid; the Windows and Linux renders use the whole tile,
-as the other Crafting Apps do.
-
-## Provenance
-
-The owner's original drawing, made in ArtCraft (2880 px, engraving style, keyed to the palette),
-vectorised. License: see `LICENSE.txt`.
+The Al Majlis Studio family look: an Al Majlis blue rounded tile (`#2a78f9`, corner radius 20 % of
+the tile, transparent corners) with a white line glyph: a fountain-pen nib over two overlapping squares.
 
 ## Files
 
-- `photocraft.svg`: canonical master (traced at 2048 px).
-- `photocraft-small.svg`: lighter trace (traced at 1024 px); also the hicolor scalable icon.
-- `photocraft-1024.png`: 1024 px render on the macOS grid.
-- `photocraft.icns`: macOS bundle icon (`CFBundleIconFile`).
-- `photocraft.ico`: Windows icon, 16–256 px, embedded in the `.exe` by `apps/photocraft/build.rs`.
-- `hicolor/<size>/apps/ai.storyteller.photocraft.png` (16–512) and `hicolor/scalable/...svg`:
-  Linux icon theme.
+| File | What |
+|---|---|
+| `photocraft.svg`, `photocraft-small.svg`, `hicolor/scalable/apps/ai.storyteller.photocraft.svg` | the vector (the approved trace, cropped and clipped to the rounded tile) |
+| `hicolor/<n>x<n>/apps/ai.storyteller.photocraft.png` | full-bleed renders, 16-512 px; the 128 px one is the in-app mark and About icon, the 256 px one the window icon |
+| `photocraft-1024.png`, `photocraft.icns`, `photocraft.ico` | the same tile at the placement each file had before (Apple grid on macOS, full bleed on Windows) |
 
-The app also sets the window icon and Wayland app ID at runtime (`apps/photocraft/src/app_icon.rs`,
-`main.rs`). On Windows the taskbar shows the icon of the Start Menu shortcut that launches the
-exe, so the MSI's `<Icon Id>` keeps the `.exe` extension (ICE50); `app_icon.rs` documents the
-details and tests the `.ico` sizes and the WiX icon references.
-
-## Regenerate
-
-Replace `photocraft.svg` (and `photocraft-small.svg`), then run `packaging/icons.sh`. It needs
-`resvg`, plus `iconutil` on macOS; the `.ico` is packed by `cargo xtask ico`.
+File names and the app id `ai.storyteller.photocraft` are unchanged (code and packaging depend on them).
+Licence: see [LICENSE.txt](LICENSE.txt). `packaging/icons.sh` still renders the derived files from `photocraft.svg`.
