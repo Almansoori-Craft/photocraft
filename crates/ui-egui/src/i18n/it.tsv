@@ -9,7 +9,7 @@
 # Clean-room: every entry was written from the plain meaning of the English label using ordinary
 # Italian computing vocabulary (livello, pennello, selezione, quadro ...). No proprietary localisation
 # resource, string table or product UI was consulted or copied; add entries the same way.
-# Product and technology names (PhotoCraft, ArtCraft, OpenType, CMYK, Lab ...) stay in Latin
+# Product and technology names (PhotoCraft, OpenType, CMYK, Lab ...) stay in Latin
 # letters; the trailing … of dialog commands is kept.
 
 # Layer Mask Display Options (the layer mask rubylith's colour and opacity)
@@ -910,11 +910,6 @@
 	Tool Presets	Predefiniti strumento
 	Tools	Strumenti
 	About PhotoCraft	Informazioni su PhotoCraft
-	PhotoCraft Website	Sito web PhotoCraft
-	PhotoCraft on GitHub	PhotoCraft su GitHub
-	ArtCraft Website	Sito web ArtCraft
-	Join the ArtCraft Discord…	Unisciti al Discord di ArtCraft…
-	Report an Issue…	Segnala un problema…
 	WIA Support…	Supporto WIA…
 	Apply	Applica
 	HSB/HSL	HSB/HSL
@@ -1202,7 +1197,6 @@
 	Diffusion	Diffusione
 	Discard the embedded profile (don't color manage)	Scarta profilo incorporato (non gestire colore)
 	Discontiguous	Non contiguo
-	Discord	Discord
 	Dismiss	Chiudi
 	Display P3	Display P3
 	Display Text	Mostra testo
@@ -1336,7 +1330,6 @@
 	Invert All	Inverti tutto
 	Invert has no settings.	Inverti non ha impostazioni.
 	Italic	Corsivo
-	Join us on Discord	Unisciti al nostro Discord
 	Justify all	Giustifica tutto
 	Justify last centered	Giustifica ultimo centrato
 	Justify last left	Giustifica ultimo a sinistra
@@ -1743,7 +1736,6 @@
 	Apple Watch 45mm	Apple Watch 45mm
 	Aqua	Acqua
 	Art & Illustration	Arte e illustrazione
-	ArtCraft	ArtCraft
 	Background Eraser Tool	Strumento Gomma per sfondo
 	Bevel & Emboss	Smusso e rilievo
 	Blend Mode	Metodo di fusione
@@ -1813,7 +1805,6 @@
 	Film & Video	Film e video
 	From	Da
 	General	Generale
-	GitHub	GitHub
 	Gradient Overlay	Sovrapposizione sfumatura
 	Gradient Tool	Strumento Sfumatura
 	Greens	Verdi
@@ -1890,7 +1881,6 @@
 	Pen Tool	Strumento Penna
 	Convert Point Tool	Strumento Converti punto
 	Photo	Foto
-	PhotoCraft website	Sito web PhotoCraft
 	Picas	Pica
 	Pillow Emboss	Rilievo cuscino
 	Pixel Replacement	Sostituzione pixel
@@ -3648,8 +3638,6 @@ layerLabel	No Color	Nessun colore
 	Custom Pixel Aspect Ratio	Proporzioni pixel personalizzate
 	32-bit Preview Options	Opzioni anteprima 32 bit
 	New Guide	Nuova guida
-	Join the ArtCraft Discord	Unisciti al Discord di ArtCraft
-	Report an Issue	Segnala un problema
 	Load Files into Stack	Carica file in pila
 	Statistics	Statistiche
 	Duplicate Layers	Duplica livelli
@@ -4199,7 +4187,6 @@ navigator	Zoom	Zoom
 	on	attivo
 	off	disattivo
 	This adjustment ({key}) is kept as imported and can't be edited yet.	Questa regolazione ({key}) resta come è stata importata e non si può ancora modificare.
-	Join the ArtCraft Discord ({url})	Unisciti al Discord di ArtCraft ({url})
 	{index} of {total}	{index} di {total}
 	{shortcut} assigned.	{shortcut} assegnata.
 	{shortcut} is already in use by {commands} and will be removed from it when you click OK.	{shortcut} è già usata da {commands} e verrà rimossa quando fai clic su OK.

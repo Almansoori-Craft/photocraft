@@ -16,7 +16,7 @@
 # taivutus, edustaväri, tasoasetelma, heittovarjo …). Clean-room: written from the plain meaning of
 # the English labels; no proprietary localisation resource was consulted or copied.
 # Labels use sentence case, commands are imperatives, and pointer hints say what an action does
-# ("Lisää piste napsauttamalla"). Product, format and technology names (PhotoCraft, ArtCraft,
+# ("Lisää piste napsauttamalla"). Product, format and technology names (PhotoCraft,
 # OpenType, CMYK, Lab …) and key caps keep their spelling; the trailing "…" of dialog commands is
 # kept. Numbers follow Finnish style (decimal comma, a space before %). Plural rule: one|other
 # (n != 1 -> other); the other form takes the partitive singular ("1 taso", "2 tasoa").
@@ -546,11 +546,6 @@
 
 # Help
 	About PhotoCraft	Tietoja PhotoCraftista
-	PhotoCraft Website	PhotoCraft-verkkosivusto
-	PhotoCraft on GitHub	PhotoCraft GitHubissa
-	Report an Issue…	Ilmoita ongelmasta…
-	ArtCraft Website	ArtCraft-verkkosivusto
-	Join the ArtCraft Discord…	Liity ArtCraftin Discordiin…
 	System Info…	Järjestelmän tiedot…
 
 # Tools and options bar
@@ -1698,10 +1693,6 @@
 	Preserve Transparency	Säilytä läpinäkyvyys
 	Reverse	Käännä järjestys
 	Align with layer	Tasaa tason kanssa
-	Join us on Discord	Liity Discordiin
-	PhotoCraft website	PhotoCraft-verkkosivusto
-	ArtCraft	ArtCraft
-	GitHub	GitHub
 	No character style	Ei merkkityyliä
 	No author	Ei tekijää
 	Not in Dictionary:	Ei sanastossa:
@@ -2125,7 +2116,6 @@
 	Delete tool preset	Poista työkalun esiasetus
 	Depth Jitter	Syvyyden vaihtelu
 	Discontiguous	Epäyhtenäinen
-	Discord	Discord
 	Display P3	Display P3
 	Display Text	Näytä teksti
 	Divide…	Jaa…
@@ -3949,8 +3939,6 @@ curves	Smooth	Tasoita
 	Iris Blur	Iiris-sumennus
 	Ivy	Muratti
 	Jag	Rosoisuus
-	Join the ArtCraft Discord	Liity ArtCraftin Discordiin
-	Join the ArtCraft Discord ({url})	Liity ArtCraftin Discordiin ({url})
 	Keeps the current texture when switching presets.	Säilyttää nykyisen tekstuurin esiasetusta vaihdettaessa.
 	Kernel	Ydin
 	Kerning: Metrics, Optical or a value in 1/1000 em (Alt+←/→ at the caret)	Parivälistys: metriikka, optinen tai arvo 1/1000 em (Alt+←/→ kohdistimessa)
@@ -4263,7 +4251,6 @@ curves	Smooth	Tasoita
 	Replace Contents	Korvaa sisältö
 	Replace Footage	Korvaa kuvamateriaali
 	Report a Bug	Ilmoita virheestä
-	Report an Issue	Ilmoita ongelmasta
 	Reset Alignment	Palauta tasaus
 	Reset All	Palauta kaikki
 	Reset Preferences	Palauta oletusasetukset

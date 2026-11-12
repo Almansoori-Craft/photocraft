@@ -17,7 +17,7 @@
 # Clean-room: written from the plain meaning of the English labels using ordinary Danish computing
 # vocabulary; no proprietary localisation resource, string table or product UI was consulted or
 # copied. Labels use sentence case, commands are imperatives and the user is addressed as "du".
-# Product, format and technology names (PhotoCraft, ArtCraft, OpenType, CMYK, Lab …) and key caps
+# Product, format and technology names (PhotoCraft, OpenType, CMYK, Lab …) and key caps
 # keep their spelling; the trailing "…" of dialog commands is kept. Plural rule: one|other
 # (n != 1 -> other). Native-speaker review of the remaining specialist terms is welcome.
 
@@ -545,11 +545,6 @@
 
 # Help
 	About PhotoCraft	Om PhotoCraft
-	PhotoCraft Website	PhotoCrafts websted
-	PhotoCraft on GitHub	PhotoCraft på GitHub
-	Report an Issue…	Rapportér et problem…
-	ArtCraft Website	ArtCrafts websted
-	Join the ArtCraft Discord…	Deltag i ArtCrafts Discord…
 	System Info…	Systemoplysninger…
 
 # Tools and options bar
@@ -1697,10 +1692,6 @@
 	Preserve Transparency	Bevar gennemsigtighed
 	Reverse	Omvendt
 	Align with layer	Justér med laget
-	Join us on Discord	Mød os på Discord
-	PhotoCraft website	PhotoCraft-websted
-	ArtCraft	ArtCraft
-	GitHub	GitHub
 	No character style	Ingen tegnstil
 	No author	Ingen forfatter
 	Not in Dictionary:	Ikke i ordbogen:
@@ -2124,7 +2115,6 @@
 	Delete tool preset	Slet værktøjsforudindstilling
 	Depth Jitter	Dybdejitter
 	Discontiguous	Usammenhængende
-	Discord	Discord
 	Display P3	Display P3
 	Display Text	Vis tekst
 	Divide…	Opdel…
@@ -3948,8 +3938,6 @@ curves	Smooth	Udjævn
 	Iris Blur	Irissløring
 	Ivy	Vedbend
 	Jag	Hak
-	Join the ArtCraft Discord	Deltag i ArtCrafts Discord
-	Join the ArtCraft Discord ({url})	Deltag i ArtCrafts Discord ({url})
 	Keeps the current texture when switching presets.	Beholder den aktuelle tekstur ved skift af forudindstilling.
 	Kernel	Kerne
 	Kerning: Metrics, Optical or a value in 1/1000 em (Alt+←/→ at the caret)	Knibning: metrik, optisk eller en værdi i 1/1000 em (Alt+←/→ ved indsætningspunktet)
@@ -4262,7 +4250,6 @@ curves	Smooth	Udjævn
 	Replace Contents	Erstat indhold
 	Replace Footage	Erstat materiale
 	Report a Bug	Rapportér en fejl
-	Report an Issue	Rapportér et problem
 	Reset Alignment	Nulstil justering
 	Reset All	Nulstil alle
 	Reset Preferences	Nulstil præferencer

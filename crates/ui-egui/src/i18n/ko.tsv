@@ -877,11 +877,6 @@
 	Tool Presets	도구 사전 설정
 	Tools	도구
 	About PhotoCraft	PhotoCraft 정보
-	PhotoCraft Website	PhotoCraft 웹사이트
-	PhotoCraft on GitHub	GitHub의 PhotoCraft
-	ArtCraft Website	ArtCraft 웹사이트
-	Join the ArtCraft Discord…	ArtCraft Discord 참여…
-	Report an Issue…	문제 신고…
 	WIA Support…	WIA 지원…
 	Apply	적용
 	HSB/HSL	HSB/HSL
@@ -1188,7 +1183,6 @@
 	Diffusion	확산
 	Discard the embedded profile (don't color manage)	포함된 프로파일 버리기(색상 관리 안 함)
 	Discontiguous	비인접
-	Discord	Discord
 	Dismiss	닫기
 	Display P3	Display P3
 	Display Text	표시 텍스트
@@ -1316,7 +1310,6 @@
 	Invert All	모두 반전
 	Invert has no settings.	반전에는 설정이 없습니다.
 	Italic	기울임꼴
-	Join us on Discord	Discord 참여
 	Justify all	모든 줄 양쪽 정렬
 	Justify last centered	마지막 줄 가운데 정렬
 	Justify last left	마지막 줄 왼쪽 정렬
@@ -1725,7 +1718,6 @@
 	Apple Watch 45mm	Apple Watch 45mm
 	Aqua	청록
 	Art & Illustration	아트 및 일러스트레이션
-	ArtCraft	ArtCraft
 	Background Eraser Tool	배경 지우개 도구
 	Bevel & Emboss	경사와 엠보스
 	Blend Mode	혼합 모드
@@ -1796,7 +1788,6 @@
 	Film & Video	필름 및 비디오
 	From	시작
 	General	일반
-	GitHub	GitHub
 	Gradient Overlay	그레이디언트 오버레이
 	Gradient Tool	그레이디언트 도구
 	Greens	초록 계열
@@ -1873,7 +1864,6 @@
 	Pen Tool	펜 도구
 	Convert Point Tool	기준점 변환 도구
 	Photo	사진
-	PhotoCraft website	PhotoCraft 웹사이트
 	Picas	파이카
 	Pillow Emboss	쿠션 엠보스
 	Pixel Replacement	픽셀 대체
@@ -2813,8 +2803,6 @@ cameraRaw	Color	색상
 	Custom Pixel Aspect Ratio	사용자 정의 픽셀 종횡비
 	32-bit Preview Options	32비트 미리 보기 옵션
 	New Guide	새 안내선
-	Join the ArtCraft Discord	ArtCraft Discord 참여
-	Report an Issue	문제 신고
 	WIA Support	WIA 지원
 	Load Files into Stack	파일을 스택으로 불러오기
 	Statistics	통계

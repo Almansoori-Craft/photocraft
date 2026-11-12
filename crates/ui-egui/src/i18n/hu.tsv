@@ -12,7 +12,7 @@
 # Clean-room: every entry was written from the plain meaning of the English label using ordinary
 # Hungarian image-editing vocabulary (réteg, maszk, kijelölés ...). No proprietary localisation
 # resource, string table or product UI was consulted or copied; add entries the same way.
-# Product and technology names (PhotoCraft, ArtCraft, OpenType, CMYK, Lab ...) stay in Latin
+# Product and technology names (PhotoCraft, OpenType, CMYK, Lab ...) stay in Latin
 # letters; the trailing "…" of dialog commands is kept. Plural rule: a count is followed by the
 # singular noun in Hungarian, so every @plural entry has a single form.
 
@@ -518,7 +518,6 @@
 	Artboard Guides	Rajztábla-segédvonalak
 	Artboards to Files	Rajztáblák fájlokba
 	Artboards to PDF	Rajztáblák PDF-be
-	ArtCraft Website	ArtCraft-weboldal
 	Average	Átlag
 	Background From Layer	Háttér a rétegből
 	Bitmap…	Bittérkép…
@@ -684,8 +683,6 @@
 	Internet Standard RGB	Internetes szabványos RGB
 	Inverse	Megfordítás
 	Iris Blur…	Íriszelmosás…
-	Join the ArtCraft Discord	Csatlakozás az ArtCraft Discordhoz
-	Join the ArtCraft Discord…	Csatlakozás az ArtCraft Discordhoz…
 	Language	Nyelv
 	Language Options	Nyelvi beállítások
 	Large	Nagy
@@ -779,8 +776,6 @@
 	Paths to Illustrator	Útvonalak Illustrator-fájlba
 	Pattern Preview	Mintázat előnézete
 	PhotoCraft	PhotoCraft
-	PhotoCraft on GitHub	PhotoCraft a GitHubon
-	PhotoCraft Website	PhotoCraft-weboldal
 	Photography	Fotózás
 	Picture Frame…	Képkeret…
 	Pinch…	Becsípés…
@@ -820,8 +815,6 @@
 	Rename Layer…	Réteg átnevezése…
 	Render	Renderelés
 	Replace All Missing Fonts	Összes hiányzó betűtípus cseréje
-	Report an Issue	Hiba bejelentése
-	Report an Issue…	Hiba bejelentése…
 	Reset All	Összes alaphelyzetbe
 	Reset All Tools	Összes eszköz alaphelyzetbe
 	Reset Tool	Eszköz alaphelyzetbe
@@ -1846,7 +1839,6 @@ layerLabel	Magenta	Bíbor
 	Delete Tool Preset	Eszköz-előbeállítás törlése
 	Delete tool preset	Eszköz-előbeállítás törlése
 	Delete Workspace	Munkaterület törlése
-	Discord	Discord
 	Doc: {w} × {h} px	Dok.: {w} × {h} px
 	Drag a box or click four corners · drag the corners onto the edges of a skewed shape · {commit} commits · Esc cancels	Húzz egy keretet, vagy kattints a négy sarokra · húzd a sarkokat a ferde alakzat éleire · {commit}: véglegesítés · Esc: megszakítás
 	Drag a crop box · drag inside to move · edges resize ({ratio} ratio, {centre} centre) · Space moves while drawing · arrows nudge · X swaps orientation · {commit} commits · Esc cancels	Húzz egy körbevágási keretet · belül húzva mozgatod · az élekkel átméretezed ({ratio}: arány, {centre}: középről) · Space: mozgatás rajzolás közben · nyilak: léptetés · X: tájolás cseréje · {commit}: véglegesítés · Esc: megszakítás
@@ -1901,7 +1893,6 @@ layerLabel	Magenta	Bíbor
 	Intersect with	Metszet ezzel
 	Intersect with selection  ({key})	Metszet a kijelöléssel  ({key})
 	Invalid panel layout; restored the default dock	Érvénytelen panelelrendezés; az alapértelmezett dokkolás visszaállítva
-	Join the ArtCraft Discord ({url})	Csatlakozz az ArtCraft Discord-szerveréhez ({url})
 	Keyboard Shortcuts	Billentyűparancsok
 	Kind	Fajta
 	Lasso	Lasszó
@@ -3133,7 +3124,6 @@ cameraRaw	Yellow	Sárga
 	Arch	Boltív
 	Area	Terület
 	Artboard Tool	Rajztábla
-	ArtCraft	ArtCraft
 	Ask	Rákérdezés
 	Aspect Ratio	Oldalarány
 	Assign Profile	Profil hozzárendelése
@@ -3331,7 +3321,6 @@ cameraRaw	Yellow	Sárga
 	Enable Generator	Generátor bekapcsolása
 	Generators	Generátorok
 	Generic	Általános
-	GitHub	GitHub
 	Gloss	Csillogás
 	Glossy	Fényes
 	Good	Jó
@@ -3392,7 +3381,6 @@ cameraRaw	Yellow	Sárga
 	Interpret Footage	Videoanyag értelmezése
 	Interval	Intervallum
 	Invalid {mode} profile	Érvénytelen profil ({mode})
-	Join us on Discord	Csatlakozz hozzánk a Discordon
 	Keep Using CPU	Marad a CPU
 	Kernel	Szűrőmag
 	Keyboard	Billentyűzet
@@ -3513,7 +3501,6 @@ cameraRaw	Yellow	Sárga
 	Perimeter	Kerület
 	Perspective Crop Tool	Perspektivikus körbevágás
 	PhotoCraft is using the CPU image compositor. The window may still use your graphics adapter.	A PhotoCraft a CPU-s képösszeállítót használja. Az ablak megjelenítése ettől még használhatja a grafikus adaptert.
-	PhotoCraft website	PhotoCraft-weboldal
 	PhotoCraft — Screen Color Picker	PhotoCraft — Képernyő-színválasztó
 	Photomerge	Fotóegyesítés
 	Pick a screen pixel or press Esc to cancel	Válassz egy pixelt a képernyőn, vagy nyomd meg az Esc billentyűt a megszakításhoz

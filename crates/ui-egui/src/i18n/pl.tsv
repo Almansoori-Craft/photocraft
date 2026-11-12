@@ -13,7 +13,7 @@
 # Clean-room: every entry was written from the plain meaning of the English label using ordinary
 # Polish image-editing vocabulary (warstwa, maska, zaznaczenie, pędzel, rozmycie, krycie ...). No
 # proprietary localisation resource, string table or product UI was consulted or copied; add
-# entries the same way. Product and technology names (PhotoCraft, ArtCraft, OpenType, CMYK, Lab ...)
+# entries the same way. Product and technology names (PhotoCraft, OpenType, CMYK, Lab ...)
 # stay in Latin letters; the trailing "…" of dialog commands is kept.
 # Conventions: menus are nouns (Plik, Edycja, Obraz ...), commands are infinitives (Otwórz…,
 # Zapisz jako…), sentence case as in the English source. Quotes: „…”.
@@ -897,11 +897,6 @@
 	Tool Presets	Ustawienia wstępne narzędzi
 	Tools	Narzędzia
 	About PhotoCraft	O programie PhotoCraft
-	PhotoCraft Website	Strona internetowa PhotoCraft
-	PhotoCraft on GitHub	PhotoCraft na GitHubie
-	ArtCraft Website	Strona internetowa ArtCraft
-	Join the ArtCraft Discord…	Dołącz do Discorda ArtCraft…
-	Report an Issue…	Zgłoś problem…
 	WIA Support…	Obsługa WIA…
 	Apply	Zastosuj
 	HSB/HSL	HSB/HSL
@@ -1202,7 +1197,6 @@
 	Diffusion	Dyfuzja
 	Discard the embedded profile (don't color manage)	Odrzuć osadzony profil (bez zarządzania kolorami)
 	Discontiguous	Niesąsiadujące
-	Discord	Discord
 	Dismiss	Zamknij
 	Display P3	Display P3
 	Display Text	Tekst wyświetlany
@@ -1333,7 +1327,6 @@
 	Invert All	Odwróć wszystko
 	Invert has no settings.	Odwracanie nie ma ustawień.
 	Italic	Kursywa
-	Join us on Discord	Dołącz do nas na Discordzie
 	Justify all	Wyjustuj wszystko
 	Justify last centered	Wyjustuj, ostatni wiersz wyśrodkowany
 	Justify last left	Wyjustuj, ostatni wiersz do lewej
@@ -1736,7 +1729,6 @@
 	Apple Watch 45mm	Apple Watch 45 mm
 	Aqua	Błękit morski
 	Art & Illustration	Sztuka i ilustracja
-	ArtCraft	ArtCraft
 	Background Eraser Tool	Narzędzie Gumka tła
 	Bevel & Emboss	Ukos i płaskorzeźba
 	Blend Mode	Tryb mieszania
@@ -1807,7 +1799,6 @@
 	Film & Video	Film i wideo
 	From	Od
 	General	Ogólne
-	GitHub	GitHub
 	Gradient Overlay	Nakładka gradientu
 	Gradient Tool	Narzędzie Gradient
 	Greens	Zielone
@@ -1884,7 +1875,6 @@
 	Pen Tool	Narzędzie Pióro
 	Convert Point Tool	Narzędzie Konwertuj punkt
 	Photo	Zdjęcie
-	PhotoCraft website	Strona internetowa PhotoCraft
 	Picas	Pikasy
 	Pillow Emboss	Płaskorzeźba poduszkowa
 	Pixel Replacement	Zamiana pikseli
@@ -3279,8 +3269,6 @@ cameraRaw	Roughness	Chropowatość
 	Custom Pixel Aspect Ratio	Niestandardowe proporcje pikseli
 	32-bit Preview Options	Opcje podglądu 32-bitowego
 	New Guide	Nowa prowadnica
-	Join the ArtCraft Discord	Dołącz do Discorda ArtCraft
-	Report an Issue	Zgłoś problem
 	WIA Support	Obsługa WIA
 	Load Files into Stack	Wczytaj pliki do stosu
 	Statistics	Statystyki

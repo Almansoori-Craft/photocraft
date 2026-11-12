@@ -18,7 +18,7 @@
 # (Datoteka, Uređivanje, Slika ...), commands are imperatives (Otvori…, Sačuvaj kao…), tools read
 # "Alatka …" (Alatka četkica, Alatka za pomeranje), presets are "šabloni", patterns "šare" and
 # swatches "uzorci boja". Serbian quotation marks „…“ around names. Product and technology names
-# (PhotoCraft, ArtCraft, Camera Raw, OpenType, Lab ...) stay as they are; RGB/CMYK stay as they
+# (PhotoCraft, Camera Raw, OpenType, Lab ...) stay as they are; RGB/CMYK stay as they
 # are; the trailing "…" of dialog commands is kept. A count that is not an @plural entry is kept
 # out of noun agreement ("Broj: {n}", "slojeva: {n}") so every number reads correctly.
 
@@ -903,11 +903,6 @@
 	Tool Presets	Šabloni alatki
 	Tools	Alatke
 	About PhotoCraft	O programu PhotoCraft
-	PhotoCraft Website	Veb-sajt PhotoCraft-a
-	PhotoCraft on GitHub	PhotoCraft na GitHub-u
-	ArtCraft Website	Veb-sajt ArtCraft-a
-	Join the ArtCraft Discord…	Pridružite se ArtCraft Discord zajednici…
-	Report an Issue…	Prijavi problem…
 	WIA Support…	WIA podrška…
 	Apply	Primeni
 	HSB/HSL	HSB/HSL
@@ -1182,7 +1177,6 @@
 	Diffusion	Difuzija
 	Discard the embedded profile (don't color manage)	Odbaci ugrađeni profil (bez upravljanja bojama)
 	Discontiguous	Nesusedno
-	Discord	Discord
 	Dismiss	Odbaci
 	Display P3	Display P3
 	Display Text	Tekst za prikaz
@@ -1308,7 +1302,6 @@
 	Invert All	Invertuj sve
 	Invert has no settings.	Invertovanje nema podešavanja.
 	Italic	Kurziv
-	Join us on Discord	Pridružite nam se na Discordu
 	Justify all	Obostrano poravnaj sve redove
 	Justify last centered	Obostrano, poslednji red centriran
 	Justify last left	Obostrano, poslednji red levo
@@ -1713,7 +1706,6 @@
 	Apple Watch 45mm	Apple Watch 45 mm
 	Aqua	Akva
 	Art & Illustration	Umetnost i ilustracija
-	ArtCraft	ArtCraft
 	Background Eraser Tool	Alatka gumica za pozadinu
 	Bevel & Emboss	Kosina i reljef
 	Blend Mode	Režim stapanja
@@ -1783,7 +1775,6 @@
 	Film & Video	Film i video
 	From	Od
 	General	Opšte
-	GitHub	GitHub
 	Gradient Overlay	Prekrivanje gradijentom
 	Gradient Tool	Alatka gradijent
 	Greens	Zelene
@@ -1862,7 +1853,6 @@
 	Pen Tool	Alatka pero
 	Convert Point Tool	Alatka za pretvaranje tačke
 	Photo	Fotografija
-	PhotoCraft website	Veb-sajt PhotoCraft-a
 	Picas	Pike
 	Pillow Emboss	Jastučasti reljef
 	Pixel Replacement	Zamena piksela
@@ -3617,8 +3607,6 @@ layerLabel	No Color	Bez boje
 	Custom Pixel Aspect Ratio	Prilagođeni odnos stranica piksela
 	32-bit Preview Options	Opcije 32-bitnog pregleda
 	New Guide	Nova vodilja
-	Join the ArtCraft Discord	Pridružite se ArtCraft Discord zajednici
-	Report an Issue	Prijavi problem
 	Load Files into Stack	Učitaj datoteke u stek
 	Statistics	Statistika
 	Duplicate Layers	Dupliraj slojeve
@@ -4170,7 +4158,6 @@ navigator	Zoom	Uvećanje
 	on	uključeno
 	off	isključeno
 	This adjustment ({key}) is kept as imported and can't be edited yet.	Ova korekcija ({key}) je zadržana onakva kakva je uvezena i još ne može da se uređuje.
-	Join the ArtCraft Discord ({url})	Pridružite se ArtCraft Discord zajednici ({url})
 	{index} of {total}	{index} od {total}
 	{shortcut} assigned.	{shortcut} je dodeljena.
 	{shortcut} is already in use by {commands} and will be removed from it when you click OK.	{shortcut} već koristi {commands} i biće uklonjena odatle kada kliknete U redu.

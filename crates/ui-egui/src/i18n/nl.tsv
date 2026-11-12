@@ -4,7 +4,7 @@
 # Clean-room: every entry was written from the plain meaning of the English label using ordinary
 # Dutch computing vocabulary (laag, selectie, masker, aanpassingslaag, penseel, verloop ...). No
 # proprietary localisation resource, string table or product UI was consulted or copied; add
-# entries the same way. Product and technology names (PhotoCraft, ArtCraft, OpenType, CMYK, Lab ...)
+# entries the same way. Product and technology names (PhotoCraft, OpenType, CMYK, Lab ...)
 # stay as they are; the trailing "…" of dialog commands is kept. UI text addresses the user
 # informally ("je") and uses sentence case.
 
@@ -844,11 +844,6 @@
 	Tool Presets	Gereedschapsvoorinstellingen
 	Tools	Gereedschappen
 	About PhotoCraft	Over PhotoCraft
-	PhotoCraft Website	Website van PhotoCraft
-	PhotoCraft on GitHub	PhotoCraft op GitHub
-	ArtCraft Website	Website van ArtCraft
-	Join the ArtCraft Discord…	Deelnemen aan de ArtCraft-Discord…
-	Report an Issue…	Probleem melden…
 	WIA Support…	WIA-ondersteuning…
 	Apply	Toepassen
 	HSB/HSL	HSB/HSL
@@ -1135,7 +1130,6 @@
 	Diffusion	Diffusie
 	Discard the embedded profile (don't color manage)	Het ingesloten profiel negeren (geen kleurbeheer)
 	Discontiguous	Niet-aaneengesloten
-	Discord	Discord
 	Dismiss	Sluiten
 	Display P3	Display P3
 	Display Text	Tekst tonen
@@ -1270,7 +1264,6 @@
 	Invert All	Alles omkeren
 	Invert has no settings.	Omkeren heeft geen instellingen.
 	Italic	Cursief
-	Join us on Discord	Doe mee op Discord
 	Justify all	Alles uitvullen
 	Justify last centered	Uitvullen, laatste regel gecentreerd
 	Justify last left	Uitvullen, laatste regel links
@@ -1673,7 +1666,6 @@
 	Apple Watch 45mm	Apple Watch 45 mm
 	Aqua	Aqua
 	Art & Illustration	Kunst en illustratie
-	ArtCraft	ArtCraft
 	Background Eraser Tool	Achtergrondgumgereedschap
 	Bevel & Emboss	Schuine kant en reliëf
 	Blend Mode	Overvloeimodus
@@ -1743,7 +1735,6 @@
 	Film & Video	Film en video
 	From	Van
 	General	Algemeen
-	GitHub	GitHub
 	Gradient Overlay	Verloopbedekking
 	Gradient Tool	Verloopgereedschap
 	Greens	Groentinten
@@ -1820,7 +1811,6 @@
 	Pen Tool	Pengereedschap
 	Convert Point Tool	Punt-converteergereedschap
 	Photo	Foto
-	PhotoCraft website	Website van PhotoCraft
 	Picas	Pica's
 	Pillow Emboss	Kussenreliëf
 	Pixel Replacement	Pixelvervanging
@@ -3136,8 +3126,6 @@ cameraRaw	Color	Kleur
 	Custom Pixel Aspect Ratio	Aangepaste pixelverhouding
 	32-bit Preview Options	Voorvertoningsopties 32-bit
 	New Guide	Nieuwe hulplijn
-	Join the ArtCraft Discord	Deelnemen aan de ArtCraft-Discord
-	Report an Issue	Probleem melden
 	Load Files into Stack	Bestanden in stapel laden
 	Statistics	Statistieken
 	Duplicate Layers	Lagen dupliceren

@@ -9,7 +9,7 @@
 # Clean-room: every entry was written from the plain meaning of the English label using ordinary
 # Indonesian computing vocabulary (layer, kuas, seleksi, kanvas ...). No proprietary localisation
 # resource, string table or product UI was consulted or copied; add entries the same way.
-# Product and technology names (PhotoCraft, ArtCraft, OpenType, CMYK, Lab ...) stay in Latin
+# Product and technology names (PhotoCraft, OpenType, CMYK, Lab ...) stay in Latin
 # letters; the trailing "…" of dialog commands is kept.
 
 # Layer Mask Display Options (the layer mask rubylith's colour and opacity)
@@ -876,11 +876,6 @@
 	Tool Presets	Preset Alat
 	Tools	Alat
 	About PhotoCraft	Tentang PhotoCraft
-	PhotoCraft Website	Situs Web PhotoCraft
-	PhotoCraft on GitHub	PhotoCraft di GitHub
-	ArtCraft Website	Situs Web ArtCraft
-	Join the ArtCraft Discord…	Gabung ke Discord ArtCraft…
-	Report an Issue…	Laporkan Masalah…
 	WIA Support…	Dukungan WIA…
 	Apply	Terapkan
 	HSB/HSL	HSB/HSL
@@ -1180,7 +1175,6 @@
 	Diffusion	Difusi
 	Discard the embedded profile (don't color manage)	Buang profil tertanam (tanpa manajemen warna)
 	Discontiguous	Tidak Berdekatan
-	Discord	Discord
 	Dismiss	Tutup
 	Display P3	Display P3
 	Display Text	Teks Tampilan
@@ -1309,7 +1303,6 @@
 	Invert All	Balikkan Semua
 	Invert has no settings.	Invert tidak punya pengaturan.
 	Italic	Miring
-	Join us on Discord	Gabung bareng kami di Discord
 	Justify all	Rata penuh semua
 	Justify last centered	Rata penuh, baris terakhir di tengah
 	Justify last left	Rata penuh, baris terakhir di kiri
@@ -1714,7 +1707,6 @@
 	Apple Watch 45mm	Apple Watch 45mm
 	Aqua	Aqua
 	Art & Illustration	Seni & Ilustrasi
-	ArtCraft	ArtCraft
 	Background Eraser Tool	Alat Background Eraser
 	Bevel & Emboss	Bevel & Emboss
 	Blend Mode	Mode Blend
@@ -1784,7 +1776,6 @@
 	Film & Video	Film & Video
 	From	Dari
 	General	Umum
-	GitHub	GitHub
 	Gradient Overlay	Overlay Gradien
 	Gradient Tool	Alat Gradien
 	Greens	Hijau
@@ -1861,7 +1852,6 @@
 	Pen Tool	Alat Pen
 	Convert Point Tool	Alat Convert Point
 	Photo	Foto
-	PhotoCraft website	Situs web PhotoCraft
 	Picas	Pica
 	Pillow Emboss	Pillow Emboss
 	Pixel Replacement	Penggantian Piksel

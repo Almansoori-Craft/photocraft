@@ -906,11 +906,6 @@
 	Tool Presets	工具预设
 	Tools	工具
 	About PhotoCraft	关于 PhotoCraft
-	PhotoCraft Website	PhotoCraft 网站
-	PhotoCraft on GitHub	PhotoCraft 的 GitHub 页面
-	ArtCraft Website	ArtCraft 网站
-	Join the ArtCraft Discord…	加入 ArtCraft 的 Discord 社区…
-	Report an Issue…	报告问题…
 	WIA Support…	WIA 支持…
 	Apply	应用
 	HSB/HSL	HSB/HSL
@@ -1215,7 +1210,6 @@
 	Diffusion	扩散
 	Discard the embedded profile (don't color manage)	丢弃嵌入的配置文件（不进行色彩管理）
 	Discontiguous	不连续
-	Discord	Discord
 	Dismiss	关闭
 	Display P3	Display P3
 	Display Text	显示文字
@@ -1351,7 +1345,6 @@
 	Invert All	全部反相
 	Invert has no settings.	反相没有可调整的设置。
 	Italic	斜体
-	Join us on Discord	加入我们的 Discord 社区
 	Justify all	全部两端对齐
 	Justify last centered	两端对齐，末行居中
 	Justify last left	两端对齐，末行左对齐
@@ -1769,7 +1762,6 @@
 	Apple Watch 45mm	Apple Watch 45mm
 	Aqua	水绿色
 	Art & Illustration	艺术与插画
-	ArtCraft	ArtCraft
 	Background Eraser Tool	背景橡皮擦工具
 	Bevel & Emboss	斜面和浮雕
 	Blend Mode	混合模式
@@ -1843,7 +1835,6 @@
 	Film & Video	电影与视频
 	From	从
 	General	常规
-	GitHub	GitHub
 	Gradient Overlay	渐变叠加
 	Gradient Tool	渐变工具
 	Greens	绿色
@@ -1922,7 +1913,6 @@
 	Pen Tool	钢笔工具
 	Convert Point Tool	转换点工具
 	Photo	照片
-	PhotoCraft website	PhotoCraft 网站
 	Picas	派卡
 	Pillow Emboss	枕状浮雕
 	Pixel Replacement	像素替换

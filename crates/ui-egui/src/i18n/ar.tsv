@@ -12,7 +12,7 @@
 # Combined from the community Arabic catalogs in #2505, #4520, #4569, #5593, #5915, #6092 and
 # #6287: each row takes the best of their translations, with one term per concept across the UI.
 # Modern Standard Arabic; menu commands use verbal nouns (فتح، حفظ باسم…). Product and technology
-# names (PhotoCraft, ArtCraft, GPU, CMYK, OpenType …) and key names stay in Latin letters; the
+# names (PhotoCraft, GPU, CMYK, OpenType …) and key names stay in Latin letters; the
 # trailing "…" of dialog commands is kept. Clean-room: written from the plain meaning of the English
 # labels; no proprietary localisation resource was consulted. Plural rule (CLDR):
 # zero|one|two|few|many|other. Reviewed for consistency by an AI model; native-speaker review of
@@ -815,11 +815,6 @@
 	Tool Presets	الإعدادات المسبقة للأدوات
 	Tools	الأدوات
 	About PhotoCraft	حول PhotoCraft
-	PhotoCraft Website	موقع PhotoCraft
-	PhotoCraft on GitHub	PhotoCraft على GitHub
-	ArtCraft Website	موقع ArtCraft
-	Join the ArtCraft Discord…	الانضمام إلى ArtCraft على Discord…
-	Report an Issue…	الإبلاغ عن مشكلة…
 	WIA Support…	دعم WIA…
 	Apply	تطبيق
 	HSB/HSL	HSB/HSL
@@ -1108,7 +1103,6 @@
 	Diffusion	الانتشار
 	Discard the embedded profile (don't color manage)	تجاهل ملف التعريف المضمّن (دون إدارة الألوان)
 	Discontiguous	غير متجاور
-	Discord	Discord
 	Dismiss	تجاهل
 	Display P3	Display P3
 	Display Text	نص العرض
@@ -1243,7 +1237,6 @@
 	Invert All	عكس الكل
 	Invert has no settings.	«عكس» ليس له إعدادات.
 	Italic	مائل
-	Join us on Discord	انضم إلينا على Discord
 	Justify all	ضبط الكل
 	Justify last centered	ضبط مع توسيط السطر الأخير
 	Justify last left	ضبط مع محاذاة السطر الأخير لليسار
@@ -1650,7 +1643,6 @@
 	Apple Watch 45mm	Apple Watch 45mm
 	Aqua	أزرق مائي
 	Art & Illustration	الفن والرسم التوضيحي
-	ArtCraft	ArtCraft
 	Background Eraser Tool	أداة ممحاة الخلفية
 	Bevel & Emboss	شطب ونقش
 	Blend Mode	وضع المزج
@@ -1720,7 +1712,6 @@
 	Film & Video	الأفلام والفيديو
 	From	من
 	General	عام
-	GitHub	GitHub
 	Gradient Overlay	تراكب التدرج
 	Gradient Tool	أداة التدرج
 	Greens	درجات الأخضر
@@ -1797,7 +1788,6 @@
 	Pen Tool	أداة القلم
 	Convert Point Tool	أداة تحويل النقطة
 	Photo	صورة فوتوغرافية
-	PhotoCraft website	موقع PhotoCraft
 	Picas	بيكا
 	Pillow Emboss	نقش وسادي
 	Pixel Replacement	استبدال البكسل
@@ -2874,7 +2864,6 @@ curves	Smooth	تنعيم
 	Light Gray	رمادي فاتح
 	Stop	إيقاف
 # Status messages, system info and tool names
-	Join the ArtCraft Discord ({url})	انضم إلى مجتمع ArtCraft على Discord ({url})
 	Nothing to paste: the clipboard holds no image	لا يوجد شيء للصقه: لا تحتوي الحافظة على أي صورة
 	Graphics adapter: {adapter}	محول الرسومات: {adapter}
 	Backend: {backend} ({type})	الواجهة الخلفية: {backend} ({type})

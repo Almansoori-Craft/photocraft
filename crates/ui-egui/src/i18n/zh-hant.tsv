@@ -14,7 +14,7 @@
 # Clean-room: every entry was written from the plain meaning of the English label using the
 # image-editing vocabulary in everyday use in Taiwan (圖層, 遮色片, 選取範圍, 濾鏡, 色階 ...). No
 # proprietary localisation resource, string table or product UI was consulted or copied; add
-# entries the same way. Product and technology names (PhotoCraft, ArtCraft, OpenType, CMYK, Lab ...)
+# entries the same way. Product and technology names (PhotoCraft, OpenType, CMYK, Lab ...)
 # and paper sizes (Legal, Tabloid) stay in Latin letters; the trailing "…" of dialog commands is
 # kept. Full-width punctuation (，。：) inside sentences; half-width parentheses and the " · "
 # separators as in the English.
@@ -905,11 +905,6 @@
 	Tool Presets	工具預設集
 	Tools	工具
 	About PhotoCraft	關於 PhotoCraft
-	PhotoCraft Website	PhotoCraft 網站
-	PhotoCraft on GitHub	GitHub 上的 PhotoCraft
-	ArtCraft Website	ArtCraft 網站
-	Join the ArtCraft Discord…	加入 ArtCraft Discord…
-	Report an Issue…	回報問題…
 	WIA Support…	WIA 支援…
 	Apply	套用
 	HSB/HSL	HSB/HSL
@@ -1198,7 +1193,6 @@
 	Diffusion	擴散
 	Discard the embedded profile (don't color manage)	捨棄嵌入的描述檔 (不進行色彩管理)
 	Discontiguous	不連續
-	Discord	Discord
 	Dismiss	關閉
 	Display P3	Display P3
 	Display Text	顯示文字
@@ -1332,7 +1326,6 @@
 	Invert All	全部反轉
 	Invert has no settings.	負片效果沒有設定。
 	Italic	斜體
-	Join us on Discord	加入我們的 Discord
 	Justify all	全部齊行
 	Justify last centered	最後一行置中齊行
 	Justify last left	最後一行靠左齊行
@@ -1743,7 +1736,6 @@
 	Apple Watch 45mm	Apple Watch 45mm
 	Aqua	水藍色
 	Art & Illustration	藝術與插畫
-	ArtCraft	ArtCraft
 	Background Eraser Tool	背景橡皮擦工具
 	Bevel & Emboss	斜角和浮雕
 	Blend Mode	混合模式
@@ -1815,7 +1807,6 @@
 	Film & Video	電影與視訊
 	From	從
 	General	一般
-	GitHub	GitHub
 	Gradient Overlay	漸層覆蓋
 	Gradient Tool	漸層工具
 	Greens	綠色
@@ -1892,7 +1883,6 @@
 	Pen Tool	筆型工具
 	Convert Point Tool	轉換錨點工具
 	Photo	相片
-	PhotoCraft website	PhotoCraft 網站
 	Picas	派卡
 	Pillow Emboss	枕狀浮雕
 	Pixel Replacement	像素取代

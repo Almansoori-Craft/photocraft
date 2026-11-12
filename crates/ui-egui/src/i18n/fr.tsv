@@ -16,7 +16,7 @@
 # Conventions: menus are nouns (Fichier, Édition, Image ...), commands are infinitives (Ouvrir…,
 # Enregistrer sous…), sentence case. French typography: a no-break space (U+00A0) before
 # « : ; ? ! » and "%", and inside guillemets « … ». Product and technology names (PhotoCraft,
-# ArtCraft, OpenType, Lab ...) stay as they are; RGB/CMYK read RVB/CMJN; the trailing "…" of
+# OpenType, Lab ...) stay as they are; RGB/CMYK read RVB/CMJN; the trailing "…" of
 # dialog commands is kept.
 
 # Layer Mask Display Options (the layer mask rubylith's colour and opacity)
@@ -883,11 +883,6 @@
 	Tool Presets	Préréglages d'outils
 	Tools	Outils
 	About PhotoCraft	À propos de PhotoCraft
-	PhotoCraft Website	Site web de PhotoCraft
-	PhotoCraft on GitHub	PhotoCraft sur GitHub
-	ArtCraft Website	Site web d'ArtCraft
-	Join the ArtCraft Discord…	Rejoindre le Discord d'ArtCraft…
-	Report an Issue…	Signaler un problème…
 	WIA Support…	Prise en charge de WIA…
 	Apply	Appliquer
 	HSB/HSL	TSL/TSI
@@ -1172,7 +1167,6 @@
 	Diffusion	Diffusion
 	Discard the embedded profile (don't color manage)	Ignorer le profil incorporé (sans gestion des couleurs)
 	Discontiguous	Non contigu
-	Discord	Discord
 	Dismiss	Fermer
 	Display P3	Display P3
 	Display Text	Texte affiché
@@ -1301,7 +1295,6 @@
 	Invert All	Tout inverser
 	Invert has no settings.	Inverser n'a aucun réglage.
 	Italic	Italique
-	Join us on Discord	Rejoignez-nous sur Discord
 	Justify all	Justifier tout
 	Justify last centered	Justifier, dernière ligne centrée
 	Justify last left	Justifier, dernière ligne à gauche
@@ -1706,7 +1699,6 @@
 	Apple Watch 45mm	Apple Watch 45 mm
 	Aqua	Aqua
 	Art & Illustration	Art et illustration
-	ArtCraft	ArtCraft
 	Background Eraser Tool	Outil Gomme d'arrière-plan
 	Bevel & Emboss	Biseau et relief
 	Blend Mode	Mode de fusion
@@ -1776,7 +1768,6 @@
 	Film & Video	Film et vidéo
 	From	De
 	General	Général
-	GitHub	GitHub
 	Gradient Overlay	Superposition de dégradé
 	Gradient Tool	Outil Dégradé
 	Greens	Verts
@@ -1853,7 +1844,6 @@
 	Pen Tool	Outil Plume
 	Convert Point Tool	Outil Conversion de point
 	Photo	Photo
-	PhotoCraft website	Site web de PhotoCraft
 	Picas	Picas
 	Pillow Emboss	Relief en coussin
 	Pixel Replacement	Remplacement de pixels
@@ -3887,8 +3877,6 @@ smartSvg	AI/PDF/EPS contents will be edited as SVG. Saving replaces the embedded
 	Iris Blur	Flou d'iris
 	Ivy	Lierre
 	Jag	Dentelé
-	Join the ArtCraft Discord	Rejoindre le Discord d'ArtCraft
-	Join the ArtCraft Discord ({url})	Rejoindre le Discord d'ArtCraft ({url})
 	Kernel	Noyau
 	Kerning: Metrics, Optical or a value in 1/1000 em (Alt+←/→ at the caret)	Crénage : Métriques, Optique ou une valeur en 1/1000 em (Alt+←/→ au point d'insertion)
 	Keyboard	Clavier
@@ -4149,7 +4137,6 @@ smartSvg	AI/PDF/EPS contents will be edited as SVG. Saving replaces the embedded
 	Replace Contents	Remplacer le contenu
 	Replace Footage	Remplacer le métrage
 	Report a Bug	Signaler un bogue
-	Report an Issue	Signaler un problème
 	Reset All	Tout réinitialiser
 	Reset Preferences	Réinitialiser les préférences
 	Resolve Missing Fonts	Résoudre les polices manquantes

@@ -15,7 +15,7 @@
 # speaker's answers to a terminology questionnaire (#10021). Clean-room: written from the plain
 # meaning of the English labels; no proprietary localisation resource was consulted or copied.
 # Labels use sentence case, commands are imperatives and the user is addressed as "du". Product,
-# format and technology names (PhotoCraft, ArtCraft, OpenType, CMYK, Lab …) and key caps keep their
+# format and technology names (PhotoCraft, OpenType, CMYK, Lab …) and key caps keep their
 # spelling; the trailing "…" of dialog commands is kept. Plural rule: one|other (n != 1 -> other).
 # Native-speaker review of the remaining specialist terms is welcome.
 
@@ -543,11 +543,6 @@
 
 # Help
 	About PhotoCraft	Om PhotoCraft
-	PhotoCraft Website	PhotoCrafts webbplats
-	PhotoCraft on GitHub	PhotoCraft på GitHub
-	Report an Issue…	Rapportera ett problem…
-	ArtCraft Website	ArtCrafts webbplats
-	Join the ArtCraft Discord…	Gå med i ArtCraft på Discord…
 	System Info…	Systeminformation…
 
 # Tools and options bar
@@ -1695,10 +1690,6 @@
 	Preserve Transparency	Bevara genomskinlighet
 	Reverse	Omvänd
 	Align with layer	Justera efter lager
-	Join us on Discord	Gå med i vår Discord
-	PhotoCraft website	PhotoCrafts webbplats
-	ArtCraft	ArtCraft
-	GitHub	GitHub
 	No character style	Inget teckenformat
 	No author	Ingen författare
 	Not in Dictionary:	Finns inte i ordlistan:
@@ -2122,7 +2113,6 @@
 	Delete tool preset	Ta bort verktygsförinställning
 	Depth Jitter	Djupvariation
 	Discontiguous	Ej sammanhängande
-	Discord	Discord
 	Display P3	Display P3
 	Display Text	Visa text
 	Divide…	Dela…
@@ -3946,8 +3936,6 @@ curves	Smooth	Jämna ut
 	Iris Blur	Irisoskärpa
 	Ivy	Murgröna
 	Jag	Taggig
-	Join the ArtCraft Discord	Gå med i ArtCraft på Discord
-	Join the ArtCraft Discord ({url})	Gå med i ArtCraft på Discord ({url})
 	Keeps the current texture when switching presets.	Behåller den aktuella texturen när du byter förinställning.
 	Kernel	Kärna
 	Kerning: Metrics, Optical or a value in 1/1000 em (Alt+←/→ at the caret)	Kerning: Metrik, Optisk eller ett värde i 1/1000 em (Alt+←/→ vid markören)
@@ -4260,7 +4248,6 @@ curves	Smooth	Jämna ut
 	Replace Contents	Ersätt innehåll
 	Replace Footage	Ersätt material
 	Report a Bug	Rapportera en bugg
-	Report an Issue	Rapportera ett problem
 	Reset Alignment	Återställ justering
 	Reset All	Återställ alla
 	Reset Preferences	Återställ inställningar
