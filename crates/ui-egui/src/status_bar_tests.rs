@@ -214,7 +214,7 @@ fn appearance_toggle_preserves_pro_layout_and_has_no_fit_button() {
     crate::prefs_ui::tick(h.state_mut(), &ctx);
     h.run_steps(3);
     assert_eq!(h.state().session.prefs().interface.appearance_mode, photocraft_engine::prefs::AppearanceMode::Light);
-    assert_eq!(h.state().ui.theme, ThemeKind::ProLight);
+    assert_eq!(h.state().ui.theme, ThemeKind::MajlisLight);
     assert!(Tokens::get(&h.ctx).pro);
     assert!(h.query_by_label("Fit").is_none(), "Fit button must not appear in light mode (#5016)");
 }

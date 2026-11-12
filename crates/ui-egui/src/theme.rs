@@ -340,7 +340,7 @@ impl Tokens {
                 caption_close_text: Color32::WHITE,
                 scrim: Color32::from_black_alpha(110),
                 majlis: true,
-                accent_hover: Color32::from_rgb(59, 130, 246),
+                accent_hover: Color32::from_rgb(29, 78, 216),
                 focus: Color32::from_rgba_unmultiplied(96, 165, 250, 128),
             },
             // Sampled from Photoshop 2026's default brightness (raw display values).

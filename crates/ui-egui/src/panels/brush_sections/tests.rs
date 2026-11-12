@@ -90,7 +90,7 @@ fn hue_jitter_paints_an_amount_track_in_every_theme() {
             h.output().shapes.iter().any(|c| matches!(&c.shape, egui::Shape::Rect(r)
                 if r.rect.width() > 150.0 && (r.rect.height() - 3.0).abs() < 0.1
                 && r.rect.top() > label.bottom() && r.rect.bottom() < label.bottom() + 30.0
-                && r.fill == t.field_border)),
+                && r.fill == if t.majlis { t.pressed } else { t.field_border })),
             "{kind:?}: Hue Jitter paints the same neutral track as other percentage amounts"
         );
         assert!(h.query_all_by_role(Role::SpinButton).any(|n| n.accesskit_node().numeric_value() == Some(37.0)));

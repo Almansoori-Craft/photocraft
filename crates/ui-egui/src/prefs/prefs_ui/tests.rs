@@ -173,8 +173,9 @@ use std::sync::{Arc, Mutex};
 #[test]
 fn appearance_resolves_both_saved_themes_and_follows_system() {
     let mut interface = prefs::Interface { appearance_mode: AppearanceMode::Auto, ..prefs::Interface::default() };
-    assert_eq!(selected_theme(&interface, Some(egui::Theme::Dark)), ThemeKind::ProMedium);
-    assert_eq!(selected_theme(&interface, Some(egui::Theme::Light)), ThemeKind::ProLight);
+    // Al Majlis: the default themes are Al Majlis Dark and Light.
+    assert_eq!(selected_theme(&interface, Some(egui::Theme::Dark)), ThemeKind::MajlisDark);
+    assert_eq!(selected_theme(&interface, Some(egui::Theme::Light)), ThemeKind::MajlisLight);
     interface.dark_theme = DarkTheme::Studio;
     interface.light_theme = LightTheme::Classic;
     assert_eq!(selected_theme(&interface, Some(egui::Theme::Dark)), ThemeKind::Studio);
@@ -215,7 +216,7 @@ fn auto_uses_native_system_theme_when_egui_does_not_report_one() {
     app.run("prefs.set", json!({"path": "interface.appearanceMode", "value": "auto"})).unwrap();
     let ctx = egui::Context::default();
     tick(&mut app, &ctx);
-    assert_eq!(app.ui.theme, ThemeKind::ProLight);
+    assert_eq!(app.ui.theme, ThemeKind::MajlisLight);
 }
 
 #[test]
@@ -237,7 +238,7 @@ fn darken_and_lighten_interface_step_through_photoshops_brightnesses_and_stop_at
     let ctx = egui::Context::default();
     let mut app = PhotocraftApp::new(photocraft_engine::Session::new(), crate::Services::default());
     sync_appearance(&mut app, &ctx);
-    assert_eq!(app.ui.theme, ThemeKind::ProMedium, "Photoshop's default brightness");
+    assert_eq!(app.ui.theme, ThemeKind::MajlisDark, "Al Majlis default; the brightness steps start from Medium");
     let press = |app: &mut PhotocraftApp, id: &str| crate::menus::invoke(app, &ctx, id, json!({})).unwrap();
     for expected in [ThemeKind::ProLightGray, ThemeKind::ProLight, ThemeKind::ProLight] {
         press(&mut app, "view.lightenInterface");
@@ -384,15 +385,15 @@ fn auto_appearance_replaces_a_restored_egui_dark_pin() {
     ctx.set_theme(egui::ThemePreference::Dark);
     assert_eq!(ctx.options(|o| o.theme_preference), egui::ThemePreference::Dark);
     appearance_frame(&mut app, &ctx, Some(egui::Theme::Light));
-    assert_palette(&ctx, ThemeKind::ProLight);
+    assert_palette(&ctx, ThemeKind::MajlisLight);
     assert_eq!(app.session.prefs().interface.appearance_mode, AppearanceMode::Auto);
     // A restored pin must also clear when the concrete PhotoCraft palette stays the same.
     ctx.set_theme(egui::ThemePreference::Dark);
     appearance_frame(&mut app, &ctx, Some(egui::Theme::Light));
     assert_eq!(ctx.options(|o| o.theme_preference), egui::ThemePreference::System);
-    assert_palette(&ctx, ThemeKind::ProLight);
+    assert_palette(&ctx, ThemeKind::MajlisLight);
     appearance_frame(&mut app, &ctx, Some(egui::Theme::Dark));
-    assert_palette(&ctx, ThemeKind::ProMedium);
+    assert_palette(&ctx, ThemeKind::MajlisDark);
     assert_eq!(app.session.prefs().interface.appearance_mode, AppearanceMode::Auto);
 }
 
